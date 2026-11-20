@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pias Geschichten lesen</title>
+<meta name="description" content="Pias Geschichten aus dem Flüsterwald zum Vorlesen: Herbst und Winter als Bücher zum Durchblättern.">
+<link rel="icon" href="img/logo.jpg">
+<style>
+@font-face{font-family:Lora;src:url(../fonts/Lora-Regular.ttf);font-display:swap}
+@font-face{font-family:Lora;src:url(../fonts/Lora-Italic.ttf);font-style:italic;font-display:swap}
+@font-face{font-family:Lora;src:url(../fonts/Lora-Bold.ttf);font-weight:700;font-display:swap}
+@font-face{font-family:Outfit;src:url(../fonts/Outfit-Regular.ttf);font-display:swap}
+@font-face{font-family:Outfit;src:url(../fonts/Outfit-Bold.ttf);font-weight:700;font-display:swap}
+:root{--bg:#EFE6D6;--paper:#FFFBF3;--ink:#2A2A35;--muted:#6B6458;--line:#E2D4BC;--pumpkin:#C2652A;--spine:#D9CBB2;--fs:19px}
+:root[data-night]{--bg:#1A1F2B;--paper:#262C3A;--ink:#ECE6DA;--muted:#A9A190;--line:#3A4256;--spine:#141821}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+.top{display:flex;align-items:center;gap:10px;padding:10px max(16px,env(safe-area-inset-left)) 10px max(16px,env(safe-area-inset-right));min-height:58px}
+.top .home{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Lora,serif;font-weight:700;font-size:18px;margin-right:auto;min-width:0}
+.top .home img{width:36px;height:36px;border-radius:50%;flex:none}
+.top .home span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 12px;font-weight:700;font-size:14px;white-space:nowrap}
+.tb.on{background:var(--pumpkin);border-color:var(--pumpkin);color:#fff}
+.seg{display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:none;padding:7px 11px;font-weight:700;font-size:13.5px}.seg button.on{background:var(--pumpkin);color:#fff}
+/* Regal */
+.shelf{max-width:1000px;margin:0 auto;padding:20px 16px 60px;text-align:center}
+.shelf h1{font-family:Lora,serif;font-size:clamp(30px,5vw,44px);margin:6px 0 8px}
+.shelf .lead{color:var(--muted);max-width:56ch;margin:0 auto 30px;font-size:17px;line-height:1.55}
+.covers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media(max-width:700px){.covers{grid-template-columns:repeat(2,minmax(0,1fr))}.covers:not(.two) .soon{grid-column:1/-1;max-width:50%;margin:0 auto}}
+.row{font-family:Lora,serif;font-size:24px;margin:40px 0 18px;text-align:left}.covers.two{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:700px){.covers.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cv{border:0;background:none;padding:0;text-align:center}
+.cv img{width:100%;aspect-ratio:600/857;object-fit:cover;border-radius:6px 12px 12px 6px;box-shadow:0 14px 30px rgba(50,35,20,.25),inset 0 0 0 1px rgba(0,0,0,.05);transition:transform .2s;display:block}
+.cv:hover img{transform:translateY(-4px) rotate(-1deg)}
+.cv b{display:block;font-family:Lora,serif;font-size:20px;margin-top:12px}.cv small{color:var(--muted);font-size:14px}
+.cv.soon img{filter:saturate(.5);opacity:.75}.cv.soon{cursor:default}.cv.soon:hover img{transform:none}
+/* Inhaltsverzeichnis */
+.toc{max-width:760px;margin:0 auto;padding:10px 16px 60px}
+.toc .head{display:flex;gap:22px;align-items:center;margin-bottom:20px}
+.toc .head img{width:130px;border-radius:4px 10px 10px 4px;box-shadow:0 10px 24px rgba(50,35,20,.22);flex:none}
+.toc h1{font-family:Lora,serif;font-size:clamp(26px,4.5vw,38px);margin:0 0 6px}
+.toc .head p{margin:0;color:var(--muted);line-height:1.5}
+.hint{background:#F6E2D0;color:#5A3416;border-radius:14px;padding:12px 16px;margin:0 0 16px;font-size:15px;line-height:1.5}
+:root[data-night] .hint{background:#3A2A1F;color:#F3D9C3}
+.list{display:flex;flex-direction:column;gap:8px}
+.ch{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ch:hover{border-color:var(--pumpkin)}
+.ch .n{flex:none;width:34px;height:34px;border-radius:50%;background:#F6E2D0;color:var(--pumpkin);font-weight:700;display:grid;place-items:center}
+:root[data-night] .ch .n{background:#3A2A1F}
+.ch .tx{flex:1;min-width:0}.ch b{display:block;font-family:Lora,serif;font-size:17.5px}.ch small{color:var(--muted);font-size:14px}
+.ch .now{flex:none;font-size:11.5px;font-weight:700;background:var(--pumpkin);color:#fff;border-radius:999px;padding:3px 9px}
+/* Buch */
+.reader{position:fixed;inset:58px 0 0 0;display:flex;flex-direction:column;align-items:center;padding:6px 12px max(12px,env(safe-area-inset-bottom))}
+.book{position:relative;flex:1;width:100%;max-width:1180px;display:flex;align-items:stretch;justify-content:center;min-height:0}
+.pagebox{position:relative;background:var(--paper);border-radius:6px;box-shadow:0 18px 40px rgba(50,35,20,.22),0 0 0 1px var(--line);overflow:hidden;height:100%;width:100%}
+.pagebox.two:after{content:"";position:absolute;top:0;bottom:0;left:50%;width:36px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(120,90,50,.13) 45%,rgba(120,90,50,.2) 50%,rgba(120,90,50,.13) 55%,transparent);pointer-events:none}
+.flow{position:absolute;top:0;left:0;height:100%;column-fill:auto;font-family:Lora,Georgia,serif;font-size:var(--fs);line-height:1.62;transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.flow.noanim{transition:none}
+.flow h2{font-family:Lora,serif;font-size:1.65em;line-height:1.15;margin:0 0 .2em;break-after:avoid}
+.flow .kick{font-family:Outfit,sans-serif;font-size:.68em;letter-spacing:.18em;text-transform:uppercase;color:var(--pumpkin);font-weight:700;margin:0 0 .5em;break-after:avoid}
+.flow .sub{font-style:italic;color:var(--muted);margin:0 0 1em}
+.flow h4,.flow h3{font-family:Lora,serif;font-size:1.12em;margin:1.1em 0 .4em;break-after:avoid}
+.flow p{margin:0 0 .75em;text-align:justify;hyphens:auto;-webkit-hyphens:auto;orphans:2;widows:2}
+.flow p.sep{text-align:center;color:var(--muted);letter-spacing:.4em}
+.flow figure{margin:0 0 1em;break-inside:avoid;text-align:center}
+.flow figure img{max-width:100%;max-height:calc(var(--ph) * .62);border-radius:10px;display:inline-block}
+.flow .scene{break-inside:avoid}.flow .scene figure img{max-height:calc(var(--ph) * .36)}
+.flow .mit{margin:0 0 .9em;background:#F6E2D0;border-radius:12px;padding:.6em .8em;text-align:left;font-family:Outfit,sans-serif;font-size:.86em;break-inside:avoid}
+:root[data-night] .flow .mit{background:#3A2A1F}
+.flow .end{font-family:Outfit,sans-serif;font-size:.8em;color:var(--muted);text-align:center;margin-top:1.4em;break-inside:avoid}
+.flow .end b{color:var(--pumpkin)}
+.nav{display:flex;align-items:center;justify-content:center;gap:12px;padding-top:10px;width:100%;max-width:1180px}
+.nav .pg{font-size:14px;color:var(--muted);min-width:120px;text-align:center;font-variant-numeric:tabular-nums}
+.arrow{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:20px;font-weight:700}
+.arrow:disabled{opacity:.35;cursor:default}
+.tap{position:absolute;top:0;bottom:0;width:18%;z-index:2;background:none;border:0}
+.tap.l{left:0}.tap.r{right:0}
+.ttl{font-size:13.5px;color:var(--muted);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}
+@media(max-width:560px){.top .tb.fsz{display:none}.nav .pg{min-width:90px}.top .ttl{display:none}.toc .head{flex-direction:column;align-items:flex-start;gap:14px}.toc .head img{width:110px}}
+.flow h3.chap{text-align:center}
+@media(max-width:560px){.flow p{text-align:left}}
+:focus-visible{outline:3px solid var(--pumpkin);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.flow{transition:none}}
+</style>
+</head>
+<body>
+<div class="top" id="top"></div>
+<main id="main"></main>
+<script>
+const BOOKS={
+ herbst:{t:"Kürbisfee Pia",s:"Herbstgeschichten",cover:"img/cover-herbst.jpg",lead:"Wie alles begann: Pia lernt Hazel, Bruno, Rana und Oda kennen. Acht Kapitel zum Vorlesen, für Kinder ab etwa 6 Jahren.",kick:"Herbst · Kapitel",unit:"Kapitel"},
+ klein:{t:"Für die Kleinen",s:"Geschichten für die Kleinen",cover:"img/cover-klein.jpg",lead:"Kurze Wintergeschichten zum Vorlesen für Kinder ab 2½ Jahren, etwa 5 bis 7 Minuten. Jede beginnt und endet gleich, und immer wenn Pia Kraft braucht, rufen alle: „Eins, zwei, drei, Kraft herbei!“",kick:"Für die Kleinen · Woche",unit:"Woche"},
+ mitmach:{t:"Mitmachgeschichten",s:"Mitmachgeschichten",cover:"img/cover-mitmach.jpg",lead:"Drei kleine Bewegungsgeschichten für den Morgenkreis oder zu Hause, schon für Kinder unter 3 Jahren. Zu jeder Szene steht im Kasten „Mitmachen“, welche Bewegung alle zusammen machen.",kick:"Mitmachgeschichte",unit:"Geschichte"},
+ winter:{t:"Winterwunder im Flüsterwald",s:"Wintergeschichten",cover:"img/cover-winter.jpg",lead:"Pia und ihre Freunde durch den Winter, von November bis zum ersten Frühlingsboten. Jede Geschichte gibt es lang (ab etwa 6 Jahren) und kurz für die Kleinen (ab 4 Jahren).",kick:"Winter · Woche",unit:"Woche"}};
+const APP="https://app.kuerbisfeepia.de/";
+let DATA=null;
+const S={view:"shelf",book:null,ch:0,page:0,pages:1,per:1,ver:"lang",fs:19,night:false,goEnd:false};
+try{const o=JSON.parse(localStorage.getItem("pia-lesen")||"{}");Object.assign(S,{ver:o.ver||"lang",fs:o.fs||19,night:!!o.night})}catch(e){}
+function save(){try{localStorage.setItem("pia-lesen",JSON.stringify({ver:S.ver,fs:S.fs,night:S.night,["pos_"+S.book]:S.ch}))}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function nowWeek(){if(!DATA)return -1;const t=new Date();let k=-1;DATA.winter.forEach((w,i)=>{const [y,m,d]=w.from.split("-").map(Number);if(t>=new Date(y,m-1,d))k=i});return k}
+function applyTheme(){document.documentElement.toggleAttribute("data-night",S.night);document.documentElement.style.setProperty("--fs",S.fs+"px")}
+function drawTop(){
+ const home=`<a class="home" href="../"><img src="img/logo.jpg" alt=""><span>Pias Geschichten</span></a>`;
+ if(S.view==="read"){
+  const b=S.book;
+  $("#top").innerHTML=`<button class="tb" onclick="route('#${b}')" aria-label="Inhalt">Inhalt</button><span class="ttl" style="margin-right:auto">${esc(BOOKS[b].t)}</span>
+  ${b==="winter"?`<div class="seg" role="group" aria-label="Fassung"><button class="${S.ver==="lang"?"on":""}" onclick="setVer('lang')">Lang</button><button class="${S.ver==="kurz"?"on":""}" onclick="setVer('kurz')">Kurz</button></div>`:""}
+  <button class="tb fsz" onclick="setFs(-1)" aria-label="Schrift kleiner">A−</button><button class="tb fsz" onclick="setFs(1)" aria-label="Schrift größer">A+</button>
+  <button class="tb ${S.night?"on":""}" onclick="S.night=!S.night;applyTheme();save();drawTop();layout(true)" aria-label="Nachtmodus">Nacht</button>`;
+ } else $("#top").innerHTML=home+`<a class="tb" href="${APP}" style="text-decoration:none">Zur App</a>`;
+}
+function shelf(){
+ S.view="shelf";drawTop();
+ $("#main").innerHTML=`<div class="shelf"><div style="font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--pumpkin);font-weight:700">Online-Buch</div>
+ <h1>Pias Geschichten aus dem Flüsterwald</h1>
+ <p class="lead">Zum Vorlesen und Selberlesen. Such dir ein Buch aus und blättere einfach los, mit den Pfeilen, mit einem Wisch zur Seite oder mit einem Tipp an den Seitenrand.</p>
+ <h2 class="row">Zum Vorlesen ab 6 Jahren</h2>
+ <div class="covers">
+  <button class="cv" onclick="route('#herbst')"><img src="img/cover-herbst.jpg" alt="Buchcover Herbstgeschichten"><b>Herbst</b><small>8 Kapitel · Wie alles begann</small></button>
+  <button class="cv" onclick="route('#winter')"><img src="img/cover-winter.jpg" alt="Buchcover Wintergeschichten"><b>Winter</b><small>18 Wochen · lang und kurz</small></button>
+  <div class="cv soon"><img src="img/cover-fruehling.jpg" alt="Buchcover Frühlingsgeschichten"><b>Frühling</b><small>Bald erhältlich · ab März</small></div>
+ </div>
+ <h2 class="row">Für die Kleinen</h2>
+ <div class="covers two">
+  <button class="cv" onclick="route('#klein')"><img src="img/cover-klein.jpg" alt="Buchcover Geschichten für die Kleinen"><b>Winter für die Kleinen</b><small>18 Wochen · ab 2½ Jahren</small></button>
+  <button class="cv" onclick="route('#mitmach')"><img src="img/cover-mitmach.jpg" alt="Buchcover Mitmachgeschichten"><b>Mitmachgeschichten</b><small>3 Geschichten · für den Morgenkreis</small></button>
+  <div class="cv soon"><img src="img/cover-klein-herbst.jpg" alt="Buchcover Herbstgeschichten für die Kleinen"><b>Herbst für die Kleinen</b><small>Bald erhältlich · ab 1. Dezember</small></div>
+  <div class="cv soon"><img src="img/cover-klein-fruehling.jpg" alt="Buchcover Frühlingsgeschichten für die Kleinen"><b>Frühling für die Kleinen</b><small>Bald erhältlich · ab März</small></div>
+ </div></div>`;window.scrollTo(0,0)}
+function toc(b){
+ S.view="toc";S.book=b;drawTop();const B=BOOKS[b],L=DATA[b];const nw=(b==="winter"||b==="klein")?nowWeek():-1;
+ let last=null;try{last=JSON.parse(localStorage.getItem("pia-lesen")||"{}")["pos_"+b]}catch(e){}
+ $("#main").innerHTML=`<div class="toc"><div class="head"><img src="${B.cover}" alt=""><div><h1>${esc(B.s)}</h1><p>${esc(B.lead)}</p></div></div>
+ ${(b==="winter"||b==="klein")?`<p class="hint"><b>Tipp:</b> In der App erscheint jede Woche ein neues Kapitel, passend zum Training der Woche. Hier könnt ihr alle Geschichten jederzeit lesen. Wer mit der App übt, liest am schönsten Woche für Woche mit${nw>=0?`, gerade ist <b>Woche ${nw+1}</b> dran`:""}.</p>`:""}
+ ${last!=null&&last>0?`<p style="margin:0 0 12px"><button class="tb on" onclick="route('#${b}-${last+1}')">Weiterlesen bei ${BOOKS[b].unit} ${last+1}</button></p>`:""}
+ <div class="list">${L.map((c,i)=>`<button class="ch" onclick="route('#${b}-${i+1}')"><span class="n">${i+1}</span><span class="tx"><b>${esc(c.t)}</b><small>${esc(c.s)}</small></span>${i===nw?'<span class="now">Diese Woche</span>':""}</button>`).join("")}</div>
+ <p style="text-align:center;margin-top:22px"><button class="tb" onclick="route('#')">Zurück zum Bücherregal</button></p></div>`;window.scrollTo(0,0)}
+function chapterHtml(){
+ const b=S.book,c=DATA[b][S.ch],B=BOOKS[b],n=DATA[b].length;const U=B.unit;
+ const body=b==="winter"?(S.ver==="kurz"?c.kurz:c.lang):c.lang;
+ const next=S.ch<n-1?`Weiter geht es mit <b>${esc(DATA[b][S.ch+1].t)}</b>.`:(b==="herbst"?`Weiter geht es im Winter: <b>Winterwunder im Flüsterwald</b>.`:b==="mitmach"?"Mehr Geschichten und Übungen gibt es kostenlos in der App.":"Bald geht es weiter im Frühling.");
+ return `<p class="kick">${B.kick} ${S.ch+1}</p><h2>${esc(c.t)}</h2><p class="sub">${esc(c.s)}</p>${body}<div class="end">Ende von ${U} ${S.ch+1}<br>${next}</div>`}
+function read(b,ch){
+ S.view="read";S.book=b;S.ch=ch;drawTop();save();
+ $("#main").innerHTML=`<div class="reader"><div class="book"><div class="pagebox" id="pb"><div class="flow noanim" id="flow"></div><button class="tap l" aria-label="Zurückblättern" onclick="turn(-1)"></button><button class="tap r" aria-label="Weiterblättern" onclick="turn(1)"></button></div></div>
+ <div class="nav"><button class="arrow" id="prev" onclick="turn(-1)" aria-label="Zurück">‹</button><span class="pg" id="pg"></span><button class="arrow" id="next" onclick="turn(1)" aria-label="Weiter">›</button></div></div>`;
+ $("#flow").innerHTML=chapterHtml();
+ const imgs=[...$("#flow").querySelectorAll("img")];let left=imgs.length;
+ const done=()=>layout(false);
+ if(!left)done();else imgs.forEach(i=>{if(i.complete){if(--left===0)done()}else i.onload=i.onerror=()=>{if(--left===0)done()}});
+ setTimeout(()=>{if(S.pages<=1)layout(false)},900);
+ swipe();}
+function layout(keep){
+ const pb=$("#pb"),fl=$("#flow");if(!pb||!fl)return;
+ const W=pb.clientWidth,H=pb.clientHeight;const two=W>=900;S.per=two?2:1;pb.classList.toggle("two",two);
+ const pad=two?Math.max(40,W*.05):Math.max(22,W*.07),gap=pad*2;
+ const colW=two?(W-pad*4)/2:(W-pad*2);
+ const frac=keep&&S.pages>1?S.page/S.pages:0;
+ fl.classList.add("noanim");
+ Object.assign(fl.style,{padding:`${pad*.8}px ${pad}px`,columnWidth:colW+"px",columnGap:gap+"px",width:W+"px",height:H+"px"});
+ fl.style.setProperty("--ph",(H-pad*1.6)+"px");
+ fl.style.transform="translateX(0)";
+ const total=Math.round((fl.scrollWidth+gap-pad*2+pad*2)/(colW+gap));
+ S.pages=Math.max(1,Math.ceil((fl.scrollWidth-pad*2+gap)/(colW+gap)));
+ S.step=W;S.colStep=colW+gap;
+ if(S.goEnd){S.page=Math.max(0,(Math.ceil(S.pages/S.per)-1)*S.per);S.goEnd=false}else S.page=keep?Math.min(S.pages-1,Math.floor(frac*S.pages/S.per)*S.per):0;
+ show(false)}
+function show(anim){
+ const fl=$("#flow");fl.classList.toggle("noanim",!anim);
+ fl.style.transform=`translateX(${-(S.page/S.per)*(S.colStep*S.per)}px)`;
+ const n=DATA[S.book].length,last=S.page+S.per>=S.pages;
+ const a=S.page+1,b=Math.min(S.pages,S.page+S.per);
+ $("#pg").textContent=(a===b?`Seite ${a}`:`Seiten ${a}–${b}`)+` von ${S.pages}`;
+ $("#prev").disabled=S.page===0&&S.ch===0;$("#next").disabled=last&&S.ch===n-1}
+function turn(d){
+ if(S.view!=="read")return;const n=DATA[S.book].length;
+ if(d>0){if(S.page+S.per<S.pages){S.page+=S.per;show(true)}else if(S.ch<n-1){history.pushState(null,"",`#${S.book}-${S.ch+2}`);read(S.book,S.ch+1)}}
+ else{if(S.page>0){S.page-=S.per;show(true)}else if(S.ch>0){S.goEnd=true;history.pushState(null,"",`#${S.book}-${S.ch}`);read(S.book,S.ch-1)}}}
+function setVer(v){S.ver=v;save();drawTop();$("#flow").innerHTML=chapterHtml();const imgs=[...$("#flow").querySelectorAll("img")];let l=imgs.length;if(!l)layout(false);else imgs.forEach(i=>{if(i.complete){if(--l===0)layout(false)}else i.onload=i.onerror=()=>{if(--l===0)layout(false)}})}
+function setFs(d){S.fs=Math.min(26,Math.max(15,S.fs+d));applyTheme();save();layout(true)}
+function swipe(){const pb=$("#pb");let x0=null,y0=0;pb.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ pb.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))turn(dx<0?1:-1);x0=null},{passive:true})}
+document.addEventListener("keydown",e=>{if(S.view!=="read")return;if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();turn(1)}if(e.key==="ArrowLeft"){e.preventDefault();turn(-1)}});
+let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{if(S.view==="read")layout(true)},150)});
+function route(h){if(h!==undefined&&h!==location.hash){history.pushState(null,"",h||location.pathname)}const m=(location.hash||"").match(/^#(herbst|winter|klein|mitmach)(?:-(\d+))?$/);
+ if(!m)return shelf();const b=m[1];if(!m[2])return toc(b);const i=Math.min(DATA[b].length,Math.max(1,+m[2]))-1;read(b,i)}
+window.addEventListener("popstate",()=>route());
+applyTheme();
+fetch("buecher.json").then(r=>r.json()).then(d=>{DATA=d;route()}).catch(()=>{$("#main").innerHTML='<p style="text-align:center;padding:40px">Die Bücher konnten gerade nicht geladen werden. Bitte die Seite neu laden.</p>'});
+</script>
+</body>
+</html>
