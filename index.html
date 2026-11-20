@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kürbisfee Pia – Geschichten, die Kinder in Bewegung bringen</title>
+<meta name="description" content="Kürbisfee Pia: kostenlose Bewegungs-App mit Geschichten für Kinder von 4 bis 10, erdacht von Kinderphysiotherapeutin Alexandra Amersbach. Ohne Anmeldung, ohne Kosten.">
+<meta property="og:title" content="Kürbisfee Pia – Geschichten, die Kinder in Bewegung bringen">
+<meta property="og:description" content="Kostenlose Bewegungs-App mit Geschichten für Kinder von 4 bis 10. Ohne Anmeldung, ohne Kosten.">
+<meta property="og:image" content="https://kuerbisfeepia.de/bilder/vorlesetag.jpg">
+<meta property="og:url" content="https://kuerbisfeepia.de/">
+<link rel="icon" href="bilder/logo-192.png">
+<link rel="apple-touch-icon" href="https://app.kuerbisfeepia.de/kuerbisfee-apple-touch-icon.png">
+<style>
+/* Schriften liegen auf dieser Seite selbst (kein Google-Server, datenschutzfreundlich) */
+@font-face{font-family:Lora;src:url(fonts/Lora-Regular.ttf);font-weight:400;font-display:swap}
+@font-face{font-family:Lora;src:url(fonts/Lora-Italic.ttf);font-style:italic;font-display:swap}
+@font-face{font-family:Lora;src:url(fonts/Lora-Bold.ttf);font-weight:700;font-display:swap}
+@font-face{font-family:Outfit;src:url(fonts/Outfit-Regular.ttf);font-weight:400;font-display:swap}
+@font-face{font-family:Outfit;src:url(fonts/Outfit-Bold.ttf);font-weight:700;font-display:swap}
+:root{--bg:#F6F1E8;--paper:#FFFDF8;--ink:#25304A;--muted:#625B50;--line:#E6DAC5;--pumpkin:#C2652A;--pumpkin-d:#9E4E1C;--sage:#6E8A63;--sky:#DCEAF4;--night:#1F2A44}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-size:17px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:700;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,40px)}h3{font-size:22px}
+.eyebrow{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--pumpkin);font-weight:700}
+.lead{font-size:clamp(17px,2vw,19px);color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;background:var(--pumpkin);color:#fff;border:2px solid var(--pumpkin);transition:background .15s}
+.btn:hover{background:var(--pumpkin-d);border-color:var(--pumpkin-d)}
+.btn.ghost{background:transparent;color:var(--pumpkin)}.btn.ghost:hover{background:#F6E2D0}
+.btn.light{background:#fff;color:var(--night);border-color:#fff}
+/* Kopf */
+header{position:sticky;top:0;z-index:20;background:rgba(246,241,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:Lora,serif;font-weight:700;font-size:21px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo img{width:42px;height:42px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(60,40,20,.18)}
+nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:600;font-size:15.5px}nav a:hover{color:var(--pumpkin)}
+@media(max-width:760px){nav ul{gap:14px}nav a{font-size:14px}.logo span{display:none}}
+@media(max-width:520px){nav li.opt{display:none}}@media(max-width:400px){nav ul{gap:10px}nav a{font-size:13px}}
+/* Hero */
+.hero{position:relative;min-height:min(86vh,720px);display:flex;align-items:center;color:var(--ink);background:#F3EBDD;overflow:hidden}
+.hero .bgimg{display:none}
+.hero:after{content:"";position:absolute;top:0;bottom:0;right:0;width:min(62%,820px);background:url(bilder/hero.jpg) center 28%/cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%)}
+.hero .wrap{position:relative;z-index:1;padding-bottom:64px;padding-top:64px;width:100%}
+.hero h1{font-size:clamp(36px,5.4vw,60px);max-width:14ch}
+.hero p{font-size:clamp(17px,2.1vw,20px);max-width:40ch;margin:14px 0 24px;color:var(--muted)}
+.hero .chips span{background:rgba(255,255,255,.7);border-color:var(--line);color:var(--ink)}
+@media(max-width:820px){.hero{display:block;min-height:0}.hero:after{display:none}.hero .bgimg{display:block;width:100%;aspect-ratio:1/0.85;object-fit:cover;object-position:center 30%}.hero .wrap{padding-top:28px;padding-bottom:44px}}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{font-size:14px;font-weight:600;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:5px 12px;border-radius:999px}
+/* Bereiche */
+section{padding:84px 0}
+.intro{text-align:center;max-width:720px;margin:0 auto 40px}
+.intro .lead{margin-top:12px}
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.paths{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.paths{grid-template-columns:1fr}}
+.path{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:transform .15s,box-shadow .15s}
+.path:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.10)}
+.path .ic{width:46px;height:46px;border-radius:14px;background:#F6E2D0;display:grid;place-items:center}
+.path .ic svg{width:26px;height:26px;stroke:var(--pumpkin);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.path p{margin:0;color:var(--muted);font-size:15.5px}.path .more{margin-top:auto;font-weight:700;color:var(--pumpkin);font-size:15px}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr;gap:32px}}
+.split.rev>div:first-child{order:2}@media(max-width:860px){.split.rev>div:first-child{order:0}}
+ul.check{list-style:none;padding:0;margin:20px 0 26px;display:flex;flex-direction:column;gap:10px}
+ul.check li{padding-left:30px;position:relative}
+ul.check li:before{content:"";position:absolute;left:2px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--sage);box-shadow:inset 0 0 0 4px #E3EDD8}
+.phone{width:min(300px,78%);margin:0 auto;border-radius:38px;border:10px solid #1E2433;box-shadow:0 24px 60px rgba(30,30,50,.25);overflow:hidden;background:#fff}
+.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.book{text-align:center}@media(max-width:700px){.books{grid-template-columns:repeat(2,minmax(0,1fr))}}.tag{white-space:normal}.books.small{grid-template-columns:repeat(4,minmax(0,1fr))}.books.small img{aspect-ratio:600/857;object-fit:cover;width:100%}.books.small h3{font-size:18px}@media(max-width:700px){.books.small{grid-template-columns:repeat(2,minmax(0,1fr))}}.book img{border-radius:10px;box-shadow:0 14px 30px rgba(60,40,20,.18);margin-bottom:12px}
+.book small{display:block;color:var(--muted);font-size:14px}
+.book.soon img{filter:saturate(.6);opacity:.8}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#E3EDD8;color:#4E7A3A;margin-bottom:4px}.tag.soon{background:#F5EACB;color:#8A6A1E}
+.ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+@media(max-width:820px){.ex-grid{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.card p{margin:0;color:var(--muted);font-size:15.5px}.card .links{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.card .links a{font-weight:600;color:var(--pumpkin);text-decoration:none}.card .links a:hover{text-decoration:underline}
+.world img{border-radius:18px;border:1px solid var(--line);box-shadow:0 14px 34px rgba(60,40,20,.10)}
+.figures{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:10px}
+.figures figure{margin:0;text-align:center;width:96px}.figures img{width:84px;height:84px;border-radius:50%;margin:0 auto 6px;border:3px solid #fff;box-shadow:0 4px 12px rgba(60,40,20,.15)}
+.figures figcaption{font-size:13.5px;line-height:1.3}.figures small{display:block;color:var(--muted)}
+.ev{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px}
+@media(max-width:860px){.ev{grid-template-columns:1fr;gap:24px;padding:18px}}
+.ev img{border-radius:16px}
+.facts{list-style:none;padding:0;margin:16px 0 18px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:16px}
+.facts dt{font-weight:700;color:var(--pumpkin)}.facts dd{margin:0}
+.ev .note{font-size:14.5px;color:var(--muted);margin-top:12px}
+.dl{margin-top:18px;background:#F6E2D0;border-radius:16px;padding:16px 18px}
+.dl.wl{background:#EEF1E4}.dl h3{font-size:19px;margin-bottom:4px}.dl p{margin:0 0 10px;color:var(--ink);font-size:15.5px}
+.shop{background:var(--night);color:#F3EEE6}
+.shop .lead{color:#C9CFDC}.shop .eyebrow{color:#F6C9A0}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+@media(max-width:760px){.shop-grid{grid-template-columns:1fr}}
+.shop-card{background:#2A3757;border:1px solid #3B4A70;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.shop-card p{margin:0;color:#C9CFDC}.shop-card ul{margin:4px 0 10px;padding-left:20px;color:#E3E7EF}.shop-card .btn{align-self:flex-start;margin-top:auto}
+.me img{border-radius:22px;aspect-ratio:4/5;object-fit:cover;width:100%;max-width:420px}
+.quote{font-family:Lora,serif;font-style:italic;font-size:21px;border-left:4px solid var(--pumpkin);padding-left:16px;margin:20px 0}
+footer{background:#EDE4D3;padding:40px 0;font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between}
+footer a{color:var(--ink);text-decoration:none;font-weight:600}footer a:hover{color:var(--pumpkin)}
+footer button{font:inherit;font-weight:600;color:var(--ink);background:none;border:0;padding:0;cursor:pointer}footer button:hover{color:var(--pumpkin)}
+.fl{display:flex;flex-wrap:wrap;gap:8px 18px}
+dialog{max-width:720px;width:calc(100% - 32px);border:0;border-radius:18px;padding:0;background:var(--paper);color:var(--ink)}
+dialog::backdrop{background:rgba(20,20,30,.55)}
+dialog .in{padding:26px 26px 30px;max-height:80vh;overflow:auto;font-size:15.5px}
+dialog .in h2{font-size:26px;margin-bottom:8px}dialog .in h3,dialog .in h4{font-size:18px;margin:18px 0 6px}dialog .in p{margin:6px 0}
+dialog .x{position:sticky;top:0;display:flex;justify-content:flex-end;padding:10px 12px 0;background:var(--paper)}
+dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer}
+:focus-visible{outline:3px solid var(--pumpkin);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="logo" href="#top"><img src="bilder/logo.jpg" alt=""><span>Kürbisfee Pia</span></a>
+ <nav aria-label="Hauptmenü"><ul><li><a href="#app">App</a></li><li><a href="#buch">Geschichten</a></li><li><a href="#uebungen">Übungen</a></li><li><a href="#events">Events</a></li><li class="opt"><a href="#welt">Flüsterwald</a></li><li><a href="#shop">Shop</a></li></ul></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" style="padding:0"><img class="bgimg" src="bilder/hero.jpg" alt="Pia meditiert vor ihrem Kürbishaus, neben ihr schläft Hazel"><div class="wrap">
+ <div class="eyebrow">Von einer Kinderphysiotherapeutin erdacht</div>
+ <h1>Geschichten, die Kinder in Bewegung bringen</h1>
+ <p>Mit Kürbisfee Pia durch das Jahr im Flüsterwald: jede Woche ein neues Kapitel zum Vorlesen und kurze Übungen für Kraft, Gleichgewicht und Körpergefühl.</p>
+ <div class="cta"><a class="btn" href="https://app.kuerbisfeepia.de/">App kostenlos öffnen</a><a class="btn ghost" href="#wege">Was ist Kürbisfee Pia?</a></div>
+ <div class="chips"><span>Für Kinder von 4 bis 10</span><span>Ohne Anmeldung</span><span>Ohne Kosten</span><span>Ohne Werbung</span></div>
+</div></section>
+
+<section id="wege"><div class="wrap">
+ <div class="intro"><div class="eyebrow">Willkommen im Flüsterwald</div><h2>Vier Wege zu Pia</h2>
+ <p class="lead">Für Kinder von 4 bis 10, und für alle älteren, die noch einen Funken Magie im Herzen tragen.</p></div>
+ <div class="paths">
+  <a class="path" href="#app"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg></span><h3>Die kostenlose App</h3><p>Tägliches Training mit Timer, magischem Zauberpfad, Urkunden und Wochengeschichte.</p><span class="more">Zur App</span></a>
+  <a class="path" href="#buch"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 5.5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0z"/><path d="M21 5.5c-3-1.5-6-1.5-9 0v14c3-1.5 6-1.5 9 0z"/></svg></span><h3>Das Online-Buch</h3><p>Pias Geschichten aus Herbst und Winter zum Durchblättern und Vorlesen.</p><span class="more">Zu den Geschichten</span></a>
+  <a class="path" href="#uebungen"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v6M7 10l5-1 5 1M9 21l3-8 3 8"/></svg></span><h3>Die Übungen</h3><p>Übung der Woche, Mitmachgeschichten und Material zum Ausdrucken.</p><span class="more">Zu den Übungen</span></a>
+  <a class="path" href="#shop"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 12h-13z"/><path d="M8.5 8a3.5 3.5 0 0 1 7 0"/></svg></span><h3>Der Shop</h3><p>Plus-Version, Übungskarten, Workbooks und Pia zum Anziehen.</p><span class="more">Zum Shop</span></a>
+ </div>
+</div></section>
+
+<section id="events" class="alt"><div class="wrap">
+ <div class="intro"><div class="eyebrow">Events</div><h2>Bewegtes Vorlesen mit Kürbisfee Pia</h2>
+ <p class="lead">Ich lese vor, und die Kinder bewegen sich mit. Live in der Praxis Humaneo in Bad Homburg.</p></div>
+ <div class="ev">
+  <img src="bilder/vorlesetag.jpg" alt="Pia und Füchsin Rana springen gemeinsam über einen Baumstamm" loading="lazy">
+  <div>
+   <span class="tag">Zum Bundesweiten Vorlesetag</span>
+   <h3 style="font-size:28px;margin-top:6px">Ranas geheimer Schatz</h3>
+   <p style="margin:10px 0 0">Was glitzert und knistert da im Flüsterwald? Füchsin Rana glaubt, einen ganz besonderen Schatz gefunden zu haben. Doch plötzlich geht es ihr gar nicht gut, und Kürbisfee Pia braucht dringend Hilfe. Eine neue Geschichte, exklusiv für den Vorlesetag geschrieben.</p>
+   <dl class="facts"><dt>Wann</dt><dd>Freitag, 20. November 2026, 17:30 Uhr</dd><dt>Wo</dt><dd>Humaneo, Daimlerstraße 13, 61352 Bad Homburg</dd><dt>Für wen</dt><dd>Kinder ab 4 Jahren, kostenlos</dd><dt>Dazu</dt><dd>Gemeinsam malen, singen und bewegen. Bitte bequeme Kleidung tragen. Waffeln für 1 Euro, verkauft von meinen Kindern.</dd></dl>
+   <div class="ev-before"><div class="cta"><a class="btn" id="evTicket" href="#">Kostenloses Ticket sichern</a><a class="btn ghost" id="evWa" href="#">Per WhatsApp anmelden</a></div>
+   <p class="note">Oder per E-Mail an mail@humaneo-praxis.de: Wie viele Erwachsene und Kinder kommen, und wie alt sind die Kinder? Die Plätze sind begrenzt.</p></div>
+   <div class="dl" id="evDl" hidden><h3>Pias Winterpaket</h3><p>„Ranas geheimer Schatz“ zum Nachlesen und Vorlesen, mit Ausmalbildern, Weihnachtskarten zum Ausmalen und Bastelanleitungen für das Kürbishaus, Strohsterne und Wichtel. Für 3,99 € in Pias Shop.</p><a class="btn" id="evStory" href="#">Zum Shop</a></div>
+   <div class="dl wl"><h3>Nächstes Event verpassen?</h3><p>Trag dich in die Warteliste ein, dann sage ich dir Bescheid, sobald das nächste Bewegte Vorlesen feststeht.</p><a class="btn ghost" id="evWait" href="#">Informiere mich über das nächste Event</a></div>
+   <div class="dl" id="evSoon"><h3>Die Geschichte zum Nachlesen</h3><p>„Ranas geheimer Schatz“ gibt es bald als Winterpaket in Pias Shop: die Geschichte, Ausmalbilder, Weihnachtskarten zum Ausmalen und Bastelanleitungen für das Kürbishaus, Strohsterne und Wichtel.</p></div>
+  </div>
+ </div>
+</div></section>
+
+<section id="app"><div class="wrap split">
+ <div><div class="eyebrow">Kostenlos, ohne Anmeldung</div><h2>Die App: jeden Tag ein kleines Abenteuer</h2>
+  <p class="lead" style="margin-top:12px">Pia sammelt mit jeder Übung Kraft für ihr Kürbishaus, und die Kinder helfen ihr dabei. So wird aus Üben eine Geschichte, auf die sich Kinder jeden Tag freuen.</p>
+  <ul class="check"><li>Training passend zum Alter, mit Bildern und Timer</li><li>Jede Woche ein neues Kapitel zum Vorlesen</li><li>Ein magischer Zauberpfad, auf dem jeder Trainingstag einen Stein zum Leuchten bringt, dazu Urkunden mit dem Namen deines Kindes</li><li>Eigene Übungen aus der Therapie hinzufügen und Pläne ausdrucken</li><li>Alles bleibt auf deinem Gerät, kein Konto, keine Daten bei mir</li></ul>
+  <div class="cta"><a class="btn" href="https://app.kuerbisfeepia.de/">App öffnen</a></div>
+  <p style="font-size:14.5px;color:var(--muted);margin-top:14px">Tipp: Im Browser „Zum Startbildschirm hinzufügen“ wählen, dann öffnet sich Pia wie eine richtige App.</p></div>
+ <div><img class="phone" src="bilder/app.jpg" alt="Startseite der App Winterwunder im Flüsterwald" loading="lazy"></div>
+</div></section>
+
+<section id="buch"><div class="wrap">
+ <div class="intro"><div class="eyebrow">Das Online-Buch</div><h2>Pias Geschichten aus dem Flüsterwald</h2>
+ <p class="lead">Jede Jahreszeit ein eigenes Buch zum Durchblättern, direkt im Browser. Die Wintergeschichten gibt es lang und kurz für die Kleinen.</p></div>
+ <div class="books">
+  <a class="book" href="lesen/#herbst" style="text-decoration:none"><img src="bilder/buch-herbst.jpg" alt="Buchcover Herbst" loading="lazy"><span class="tag">Online lesen</span><h3>Herbst</h3><small>Wie alles begann: Pia, Hazel, Bruno und Rana</small></a>
+  <a class="book" href="lesen/#winter" style="text-decoration:none"><img src="bilder/buch-winter.jpg" alt="Buchcover Winter" loading="lazy"><span class="tag">Online lesen</span><h3>Winter</h3><small>Winterwunder im Flüsterwald, 18 Wochen, lang und kurz</small></a>
+  <div class="book soon"><img src="bilder/buch-fruehling.jpg" alt="Buchcover Frühling" loading="lazy"><span class="tag soon">Bald erhältlich · ab März</span><h3>Frühling</h3><small>Ein erster Blick auf Elsa und Tante Linn</small></div>
+ </div>
+ <h3 style="text-align:center;font-size:26px;margin:50px 0 6px">Für die Kleinen</h3>
+ <p style="text-align:center;margin:0 0 22px;color:var(--muted)">Kurze Vorlesegeschichten ab 2½ Jahren und Mitmachgeschichten für den Morgenkreis.</p>
+ <div class="books small">
+  <a class="book" href="lesen/#klein" style="text-decoration:none"><img src="bilder/buch-klein.jpg" alt="Buchcover Winter für die Kleinen" loading="lazy"><span class="tag">Online lesen</span><h3>Winter für die Kleinen</h3><small>18 Wochen, ab 2½ Jahren</small></a>
+  <a class="book" href="lesen/#mitmach" style="text-decoration:none"><img src="bilder/buch-mitmach.jpg" alt="Buchcover Mitmachgeschichten" loading="lazy"><span class="tag">Online lesen</span><h3>Mitmachgeschichten</h3><small>3 Geschichten für den Morgenkreis</small></a>
+  <div class="book soon"><img src="bilder/buch-klein-herbst.jpg" alt="Buchcover Herbst für die Kleinen" loading="lazy"><span class="tag soon">Bald erhältlich · ab 1. Dezember</span><h3>Herbst für die Kleinen</h3></div>
+  <div class="book soon"><img src="bilder/buch-klein-fruehling.jpg" alt="Buchcover Frühling für die Kleinen" loading="lazy"><span class="tag soon">Bald erhältlich · ab März</span><h3>Frühling für die Kleinen</h3></div>
+ </div>
+ <p style="text-align:center;margin-top:14px"><a class="btn" href="lesen/">Im Online-Buch blättern</a></p>
+</div></section>
+
+<section id="uebungen" class="alt"><div class="wrap">
+ <div class="split"><div><div class="eyebrow">Bewegung mit Herz</div><h2>Übungen, die Kinder wirklich machen wollen</h2>
+  <p class="lead" style="margin-top:12px">Bärengang, Eichhörnchen-Schaukel, Fuchsschritt: Alle Übungen stammen aus der Kinderphysiotherapie und sind in Pias Geschichten verpackt. Sie stärken Kraft, Gleichgewicht, Haltung und Körpergefühl.</p></div>
+  <div><img src="bilder/uebungen.jpg" alt="Pia und ihre Freunde beim Üben" style="border-radius:18px" loading="lazy"></div></div>
+ <div class="ex-grid">
+  <div class="card"><h3>Übung der Woche</h3><p>Jede Woche eine neue Übung als kurzes Video auf Instagram, passend zum aktuellen Kapitel.</p><div class="links"><a class="ig" href="#">Auf Instagram ansehen</a></div></div>
+  <div class="card"><h3>Mitmachgeschichten</h3><p>Kurze Bewegungsgeschichten für Kita, Krippe und den Morgenkreis, zum Ausdrucken.</p><div class="links"><a href="lesen/#mitmach">Online durchblättern</a><a href="https://app.kuerbisfeepia.de/Mitmachgeschichte-Baer-und-Maus.pdf">Bär und Maus (PDF)</a><a href="https://app.kuerbisfeepia.de/Mitmachgeschichte-Maus-und-Welpe.pdf">Maus und Welpe (PDF)</a><a href="https://app.kuerbisfeepia.de/Mitmachgeschichte-Baer-Maus-Frosch.pdf">Bär, Maus und Frosch (PDF)</a></div></div>
+  <div class="card"><h3>Zum Ausdrucken</h3><p>Kreativ-Workbook und Rätselheft zum Winter, mit Malseiten, Rätseln und Übungen.</p><div class="links"><a href="https://app.kuerbisfeepia.de/winterwunder-workbook.pdf">Kreativ-Workbook (PDF)</a><a href="https://app.kuerbisfeepia.de/winterwunder-raetselheft.pdf">Rätselheft (PDF)</a><a href="https://app.kuerbisfeepia.de/Uebungskarten-Bilder.zip">Alle Übungskarten-Bilder (ZIP)</a></div></div>
+ </div>
+</div></section>
+
+<section id="welt"><div class="wrap">
+ <div class="intro"><div class="eyebrow">Die Welt von Pia</div><h2>Der Flüsterwald und seine Bewohner</h2>
+ <p class="lead">Pia wohnt im Kürbishaus am Waldrand. Hinter dem Mondbach, am Sonnenhang und draußen auf den Feldern warten ihre Freunde.</p></div>
+ <div class="figures">
+  <figure><img src="bilder/figur-pia.jpg" alt=""><figcaption>Pia<small>die Kürbisfee</small></figcaption></figure>
+  <figure><img src="bilder/figur-hazel.jpg" alt=""><figcaption>Hazel<small>das Eichhörnchen</small></figcaption></figure>
+  <figure><img src="bilder/figur-bruno.jpg" alt=""><figcaption>Bruno<small>der Igel</small></figcaption></figure>
+  <figure><img src="bilder/figur-rana.jpg" alt=""><figcaption>Rana<small>die Füchsin</small></figcaption></figure>
+  <figure><img src="bilder/figur-oda.jpg" alt=""><figcaption>Oda<small>die Eule</small></figcaption></figure>
+  <figure><img src="bilder/figur-kasimir.jpg" alt=""><figcaption>Kasimir<small>die Fledermaus</small></figcaption></figure>
+  <figure><img src="bilder/figur-ophelia.jpg" alt=""><figcaption>Ophelia<small>die Wolfsspinne</small></figcaption></figure>
+  <figure><img src="bilder/figur-mama.jpg" alt=""><figcaption>Vega<small>die Feldfee</small></figcaption></figure>
+ </div>
+</div></section>
+
+<section id="shop" class="shop"><div class="wrap">
+ <div class="intro"><div class="eyebrow">Shop</div><h2 style="color:#fff">Noch mehr Pia für zu Hause und die Praxis</h2>
+ <p class="lead">Die App bleibt kostenlos. Wer mehr möchte, findet hier Zusatzmaterial und Pia zum Anziehen.</p></div>
+ <div class="shop-grid">
+  <div class="shop-card"><h3 style="color:#fff">Pias Shop</h3><p>Digitales Zusatzmaterial für Familien, Praxen und Kitas:</p>
+   <ul><li>Plus-Version der App mit Videos und Therapiemodus</li><li>Übungskarten und Wochenpläne</li><li>Workbooks und Bastelanleitungen</li></ul>
+   <a class="btn light" id="shopBtn" href="#">Zum Shop</a></div>
+  <div class="shop-card"><h3 style="color:#fff">Pia zum Anziehen</h3><p>T-Shirts, Pullis, Taschen und mehr mit Pia und ihren Freunden, gedruckt und verschickt von Spreadshirt.</p>
+   <a class="btn light" id="merchBtn" href="#">Zum Spreadshirt-Shop</a></div>
+ </div>
+</div></section>
+
+<section id="ueber" class="alt"><div class="wrap split rev">
+ <div><img class="me" src="bilder/alexandra.jpg" alt="Alexandra Amersbach im Podcast-Studio" loading="lazy"></div>
+ <div><div class="eyebrow">Die Frau hinter Pia</div><h2>Hallo, ich bin Alexandra</h2>
+  <p class="lead" style="margin-top:12px">Ich bin Kinderphysiotherapeutin und arbeite seit 2010 mit Babys und Kindern, heute in der Praxis Humaneo in Bad Homburg, die ich gemeinsam mit Michael Amersbach leite. Oft ist mein Therapiebegleithund James mit dabei.</p>
+  <p>Pia ist in meiner Praxis entstanden: aus einer kleinen Feentür, die ich orange und schwarz angemalt habe. Seitdem erlebe ich jeden Tag, wie viel mehr Kinder sich bewegen, wenn eine Geschichte dahintersteckt.</p>
+  <p class="quote">Was langsam wächst, wird stark.</p>
+  <div class="cta"><a class="btn ghost" href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Kinderphysiotherapie bei Humaneo</a></div></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div><strong style="color:var(--ink);font-family:Lora,serif;font-size:19px">Kürbisfee Pia</strong><br>Geschichten, die Kinder in Bewegung bringen.<br>Die App ersetzt keine physiotherapeutische oder ärztliche Beratung.</div>
+ <div class="fl"><a href="https://app.kuerbisfeepia.de/">App</a><a class="ig" href="#">Instagram</a><a href="#shop">Shop</a><a href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Praxis Humaneo</a><button type="button" data-legal="impressum">Impressum</button><button type="button" data-legal="datenschutz">Datenschutz</button></div>
+ <div style="width:100%">© 2026 Alexandra Amersbach</div>
+</div></footer>
+
+<dialog id="legal" aria-label="Rechtliches"><div class="x"><button type="button" data-close>Schließen</button></div><div class="in" id="legalIn"></div></dialog>
+<script>
+/* ===== Links hier eintragen ===== */
+const LINKS={
+  shop:"",   // Shop bei systeme.io, z. B. https://alexandra-humaneo.systeme.io/ (leer = Coming soon)
+  merch:"https://kuerbisfeepia.myspreadshop.de/",  // Spreadshirt-Shop
+  instagram:"https://www.instagram.com/kuerbisfeepia/",
+  ticket:"https://www.eventbrite.com/e/bewegtes-vorlesen-mit-kurbisfee-pia-tickets-2004378337564",
+  whatsapp:"https://wa.me/491776700746?text="+encodeURIComponent("Hallo, wir melden uns zum Bewegten Vorlesen am 20.11. an. Erwachsene: _ Kinder: _ Alter: _"),
+  warteliste:"",     // Link zum Eintragsformular bei systeme.io (leer = E-Mail an die Praxis)
+  story:"",          // Link zur Anmeldeseite bei systeme.io, über die die Geschichte verschickt wird
+  storyAb:"2026-11-21",  // ab diesem Tag erscheint der Download
+  eventEnde:"2026-11-20T19:30"  // danach verschwindet die Anmeldung
+};
+const LEGAL={impressum:`
+    <h3>Impressum</h3>
+    <h4>Angaben gemäß § 5 DDG</h4>
+    <p>Alexandra Amersbach<br>
+    c/o Humaneo – Praxis für Physiotherapie und Kinderphysiotherapie<br>
+    Daimlerstraße 13<br>
+    61352 Bad Homburg v.d.H.</p>
+    <h4>Kontakt</h4>
+    <p>Telefon: 06172 9177791<br>
+    E-Mail: mail@humaneo-praxis.de<br>
+    Web: www.humaneo-praxis.de</p>
+    <h4>Berufsbezeichnung</h4>
+    <p>Staatlich anerkannte Physiotherapeutin mit Spezialisierung auf Pädiatrische Physiotherapie (Berufsbezeichnung verliehen in der Bundesrepublik Deutschland).</p>
+    <h4>Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h4>
+    <p>Alexandra Amersbach (Anschrift wie oben)</p>
+    <h4>Kennzeichnung von KI-Inhalten</h4>
+    <p>Illustrationen: Die Bildwelt von Kürbisfee Pia wurde nach eigenen kreativen Vorgaben mit Unterstützung KI-basierter Bildgenerierung gestaltet. Die dargestellten Personen und Figuren sind keine echten Aufnahmen.</p>
+    <p>Konzept, Texte und fachliche Inhalte: Alexandra Amersbach.</p>
+    <h4>Haftung für Links</h4>
+    <p>Diese Website und die App enthalten Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Für diese fremden Inhalte übernehme ich keine Gewähr. Verantwortlich ist immer der jeweilige Anbieter.</p>
+    <h4>Urheberrecht</h4>
+    <p>Texte, Bilder, Figuren und Übungen dieser Website und der App sind urheberrechtlich bzw. durch weitere Rechte geschützt. Eine Vervielfältigung, Veränderung oder Weitergabe über den privaten Gebrauch hinaus ist nur mit meiner vorherigen Erlaubnis zulässig.</p>
+    <p>Kürbisfee Pia ist ein eigenes Angebot von Alexandra Amersbach. Es wird von der Praxis Humaneo angeboten und verlinkt, ist aber kein Angebot der Praxis.</p>
+    <p>Hinweis: Die App ersetzt keine individuelle physiotherapeutische Anleitung und keine ärztliche Beratung.</p>`,datenschutz:`
+    <h3>Datenschutzerklärung</h3>
+    <p>Stand: Oktober 2026</p>
+    <h4>1. Verantwortliche</h4>
+    <p>Alexandra Amersbach, c/o Humaneo, Daimlerstraße 13, 61352 Bad Homburg v.d.H.<br>
+    E-Mail: mail@humaneo-praxis.de · Telefon: 06172 9177791</p>
+    <h4>2. Kurz gesagt</h4>
+    <p>Diese Website und die App kommen ohne Benutzerkonto, ohne Anmeldung, ohne Cookies und ohne Tracking oder Statistik-Tools aus. Ich erhalte keine Daten über deine Nutzung der App.</p>
+    <h4>3. Daten auf deinem Gerät</h4>
+    <p>Wenn du die App benutzt, speichert sie folgende Angaben ausschließlich im lokalen Speicher (localStorage) deines Browsers auf deinem Gerät: ein von dir eingegebener Name (am besten nur ein Vorname oder Spitzname), abgehakte Übungen, Kürbisse und Abzeichen, gewählte Einstellungen sowie selbst hinzugefügte Übungen mit Fotos, Videolinks und der optionale Kindermodus-PIN. Diese Daten werden nicht an mich oder Dritte übertragen und nicht in einer Cloud gespeichert. Ich habe darauf keinen Zugriff.</p>
+    <p>Du kannst die Daten jederzeit selbst löschen, indem du in deinem Browser die Website-Daten dieser Seite löschst. Dann sind auch Fortschritt und eigene Übungen weg. Bitte gib keine Gesundheitsdaten oder Nachnamen von Kindern ein, das ist für die Nutzung nicht nötig. Die App richtet sich an Eltern und Bezugspersonen, Kinder nutzen sie unter deren Aufsicht.</p>
+    <h4>4. Bereitstellung der Seite (Hosting)</h4>
+    <p>Website und App werden über GitHub Pages bereitgestellt (GitHub Inc., eine Tochter der Microsoft Corporation, USA). Beim Aufruf verarbeitet der Hosting-Anbieter technisch bedingt deine IP-Adresse und Zugriffsdaten (Datum, Uhrzeit, abgerufene Datei, Browsertyp) in Server-Logdateien. Das ist erforderlich, um dir Website und App auszuliefern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Bereitstellung). Eine Übermittlung in die USA kann dabei stattfinden; sie stützt sich auf die vom Anbieter bereitgestellten Garantien (EU-US Data Privacy Framework bzw. Standardvertragsklauseln). Ich selbst setze keine Cookies und keine Analyse-Dienste ein. Schriftarten und Bilder werden von dieser Seite selbst geladen, nicht von Servern Dritter.</p>
+    <h4>5. Externe Links</h4>
+    <p>Diese Website und die App enthalten Links zu meinem Shop bei systeme.io, zum Merchandise-Shop bei Spreadshirt, zu Instagram, YouTube (Videos), WhatsApp (Kürbisfee-Kanal und Terminanfrage) und zur Praxis-Website www.humaneo-praxis.de. Die Inhalte werden nicht eingebettet. Erst wenn du einen Link antippst, verlässt du diese Seite, und es gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Bestellungen und Zahlungen laufen ausschließlich über den jeweiligen Shop. Wenn du dir eine Geschichte per E-Mail schicken lässt, trägst du dich auf einer Seite von systeme.io ein; dort gelten deren Datenschutzhinweise, und du kannst dich jederzeit wieder abmelden. Die Ticketbuchung für Veranstaltungen läuft über Eventbrite.</p>
+    <h4>6. Kontaktaufnahme</h4>
+    <p>Wenn du mir per E-Mail, WhatsApp oder Telefon schreibst, verarbeite ich deine Angaben (z. B. Name, Nachricht, Kontaktdaten) zur Bearbeitung deiner Anfrage, Rechtsgrundlage Art. 6 Abs. 1 lit. b bzw. f DSGVO. Bei WhatsApp gelten zusätzlich die Datenschutzbestimmungen von WhatsApp.</p>
+    <h4>7. Deine Rechte</h4>
+    <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner personenbezogenen Daten, auf Datenübertragbarkeit sowie auf Widerspruch gegen Verarbeitungen, die auf berechtigtem Interesse beruhen. Wende dich dazu an die oben genannte Adresse. Außerdem hast du das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, z. B. beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit, Postfach 3163, 65021 Wiesbaden.</p>
+    <h4>8. Änderungen</h4>
+    <p>Ich passe diese Erklärung an, wenn sich die App oder die Rechtslage ändert. Es gilt die jeweils aktuelle Fassung in der App.</p>`};
+function setLink(el,url){if(url){el.href=url;el.rel="noopener"}else{el.setAttribute("aria-disabled","true");el.textContent="Coming soon";el.removeAttribute("href");el.style.opacity=".7";el.style.cursor="default"}}
+setLink(document.getElementById("shopBtn"),LINKS.shop);setLink(document.getElementById("merchBtn"),LINKS.merch);
+document.querySelectorAll("a.ig").forEach(a=>{a.href=LINKS.instagram;a.rel="noopener"});
+document.getElementById("evTicket").href=LINKS.ticket;
+(function(){const w=document.getElementById("evWait");if(LINKS.warteliste){w.href=LINKS.warteliste;w.rel="noopener"}else{w.href="mailto:mail@humaneo-praxis.de?subject="+encodeURIComponent("Warteliste: Nächstes Event mit Kürbisfee Pia")+"&body="+encodeURIComponent("Hallo Alexandra,\n\nbitte informiere mich über das nächste Bewegte Vorlesen mit Kürbisfee Pia.\n\nVorname:\nAlter der Kinder:\n\nViele Grüße")}})();document.getElementById("evWa").href=LINKS.whatsapp;
+(function(){const now=new Date();const ab=new Date(LINKS.storyAb+"T00:00");
+ if(now>new Date(LINKS.eventEnde))document.querySelector(".ev-before").hidden=true;
+ if(now>=ab&&LINKS.story){document.getElementById("evDl").hidden=false;document.getElementById("evSoon").hidden=true;const a=document.getElementById("evStory");a.href=LINKS.story;a.rel="noopener"}
+ else if(now>=ab){document.querySelector("#evSoon p").textContent="„Ranas geheimer Schatz“ gibt es bald als Winterpaket in Pias Shop. Schau bald wieder vorbei."}})();
+const dlg=document.getElementById("legal");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-legal]");if(b){document.getElementById("legalIn").innerHTML=LEGAL[b.dataset.legal];dlg.showModal();return}
+ if(e.target.closest("[data-close]")||e.target===dlg)dlg.close()});
+if(location.hash==="#impressum"||location.hash==="#datenschutz"){document.getElementById("legalIn").innerHTML=LEGAL[location.hash.slice(1)];dlg.showModal()}
+</script>
+</body>
+</html>
