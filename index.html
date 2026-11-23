@@ -19,7 +19,7 @@
 @font-face{font-family:Outfit;src:url(fonts/Outfit-Regular.ttf);font-weight:400;font-display:swap}
 @font-face{font-family:Outfit;src:url(fonts/Outfit-Bold.ttf);font-weight:700;font-display:swap}
 :root{--bg:#F6F1E8;--paper:#FFFDF8;--ink:#25304A;--muted:#625B50;--line:#E6DAC5;--pumpkin:#C2652A;--pumpkin-d:#9E4E1C;--sage:#6E8A63;--sky:#DCEAF4;--night:#1F2A44}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+*{box-sizing:border-box}html{scroll-behavior:smooth}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-size:17px;line-height:1.6}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -39,8 +39,8 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .logo img{width:42px;height:42px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(60,40,20,.18)}
 nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0}
 nav a{text-decoration:none;font-weight:600;font-size:15.5px}nav a:hover{color:var(--pumpkin)}
-@media(max-width:760px){nav ul{gap:14px}nav a{font-size:14px}.logo span{display:none}}
-@media(max-width:520px){nav li.opt{display:none}}@media(max-width:400px){nav ul{gap:10px}nav a{font-size:13px}}
+@media(max-width:980px){nav ul{gap:14px}nav a{font-size:14.5px}.logo span{display:none}}@media(max-width:760px){nav li.opt{display:none}}
+@media(max-width:520px){nav ul{gap:11px}nav a{font-size:13.5px}}@media(max-width:400px){nav ul{gap:8px}nav a{font-size:12.5px}.logo img{width:36px;height:36px}}
 /* Hero */
 .hero{position:relative;min-height:min(86vh,720px);display:flex;align-items:center;color:var(--ink);background:#F3EBDD;overflow:hidden}
 .hero .bgimg{display:none}
@@ -114,13 +114,74 @@ dialog .in h2{font-size:26px;margin-bottom:8px}dialog .in h3,dialog .in h4{font-
 dialog .x{position:sticky;top:0;display:flex;justify-content:flex-end;padding:10px 12px 0;background:var(--paper)}
 dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer}
 :focus-visible{outline:3px solid var(--pumpkin);outline-offset:3px}
+/* Praxis-Leiste */
+.praxisbar{background:var(--night);color:#E9ECF3;font-size:14px;text-align:center;padding:7px 16px}
+.praxisbar a{color:#F6C9A0;font-weight:700;text-decoration:none;white-space:nowrap}.praxisbar a:hover{text-decoration:underline}
+/* Neu-Hinweis */
+.neu{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px 6px 6px;text-decoration:none;font-size:15px;font-weight:600;box-shadow:0 4px 14px rgba(60,40,20,.08)}
+.neu b{background:var(--sage);color:#fff;border-radius:999px;padding:3px 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.neu:hover{color:var(--pumpkin)}
+/* Featured Buch */
+.feature{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px;margin-bottom:50px}
+.feature img{border-radius:14px;box-shadow:0 14px 30px rgba(60,40,20,.18);max-width:340px;width:100%;margin:0 auto}
+@media(max-width:820px){.feature{grid-template-columns:1fr;gap:22px;padding:20px}}
+/* Events */
+.evlist{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.evitem{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.evdate{background:#F6E2D0;color:var(--pumpkin-d);border-radius:12px;padding:8px 12px;text-align:center;font-weight:700;line-height:1.15;min-width:64px}
+.evdate small{display:block;font-size:12px;font-weight:600}
+.evitem h3{font-size:20px}.evitem p{margin:4px 0 0;color:var(--muted);font-size:15.5px}
+.evitem a{color:var(--pumpkin);font-weight:700}
+.ev2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}@media(max-width:760px){.ev2{grid-template-columns:1fr}}
+.ev2 .dl{margin-top:0}
+/* Schatzkiste */
+.shop-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:900px){.shop-grid.three{grid-template-columns:1fr}}
+.shop-card img{border-radius:12px;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;background:#fff}
+.shop-card .free{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#E3EDD8;color:#4E7A3A;border-radius:999px;padding:3px 10px}
+.shop-card .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.shop-card .btn.ghostl{background:transparent;color:#fff;border-color:#8C99BA}.shop-card .btn.ghostl:hover{background:#34426A}
+.merch{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:24px;align-items:center;background:#2A3757;border:1px solid #3B4A70;border-radius:20px;padding:26px;margin-top:18px}
+.merch p{margin:6px 0 0;color:#C9CFDC}@media(max-width:760px){.merch{grid-template-columns:1fr}}
+.news{margin-top:18px;border:1.5px dashed #5A6A92;border-radius:20px;padding:22px 26px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+.news p{margin:4px 0 0;color:#C9CFDC;max-width:62ch}
+.smallprint{font-size:13.5px;color:#AEB6C8;margin-top:14px;text-align:center}
+/* Praxis */
+.praxis{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center}
+@media(max-width:860px){.praxis{grid-template-columns:1fr;gap:22px}}
+.praxis .box{background:#EEF1E4;border-radius:20px;padding:24px}
+.praxis .box p{margin:0 0 8px}
+/* Ohne Gewinn + Mitmachen */
+.np{background:#F6E2D0;border-radius:18px;padding:18px 20px;margin:22px 0}
+.np h3{font-size:20px;margin-bottom:6px}.np p{margin:0 0 8px;font-size:16px}.np p:last-child{margin:0}
+.helpers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:8px}
+@media(max-width:980px){.helpers{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.helpers{grid-template-columns:1fr}}
+.helper{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.helper.star{border:2px solid var(--pumpkin);background:#FFF7EE}
+.helper p{margin:0;color:var(--muted);font-size:15.5px}
+.helper .tag{align-self:flex-start}
+.helper a{margin-top:auto;font-weight:700;color:var(--pumpkin);text-decoration:none}.helper a:hover{text-decoration:underline}
+/* Kontakt */
+.kontakt{max-width:720px;margin:0 auto}
+form.kf{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.kf label{display:flex;flex-direction:column;gap:5px;font-weight:600;font-size:15px}
+.kf input,.kf select,.kf textarea{font:inherit;font-weight:400;font-size:16px;padding:11px 13px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.kf textarea{min-height:130px;resize:vertical}
+.kf .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:560px){.kf .two{grid-template-columns:1fr}}
+.kf .check{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400;font-size:14.5px;color:var(--muted)}
+.kf .check input{width:20px;height:20px;flex:none;margin-top:2px}
+.kf .evf{display:flex;flex-direction:column;gap:14px;border-left:4px solid #F6E2D0;padding-left:14px}
+.kf .hp{position:absolute;left:-9999px}
+.kf .msg{border-radius:12px;padding:12px 14px;font-size:15.5px}
+.kf .msg.ok{background:#E3EDD8;color:#35552A}.kf .msg.err{background:#F6DCD4;color:#7A2E1D}
+.kf button{align-self:flex-start;cursor:pointer;font:inherit}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<div class="praxisbar">Pia stammt aus der Kinderphysiotherapie der Praxis Humaneo in Bad Homburg. <a href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Zur Praxis</a></div>
 <header><div class="wrap">
  <a class="logo" href="#top"><img src="bilder/logo.jpg" alt=""><span>Kürbisfee Pia</span></a>
- <nav aria-label="Hauptmenü"><ul><li><a href="#app">App</a></li><li><a href="#buch">Geschichten</a></li><li><a href="#uebungen">Übungen</a></li><li><a href="#events">Events</a></li><li class="opt"><a href="#welt">Flüsterwald</a></li><li><a href="#shop">Shop</a></li></ul></nav>
+ <nav aria-label="Hauptmenü"><ul><li><a href="#app">App</a></li><li><a href="#buch">Geschichten</a></li><li><a href="#schatzkiste">Schatzkiste</a></li><li><a href="#events">Events</a></li><li class="opt"><a href="#uebungen">Übungen</a></li><li class="opt"><a href="#ueber">Über uns</a></li><li class="opt"><a href="#mitmachen">Mitmachen</a></li><li><a href="#kontakt">Kontakt</a></li></ul></nav>
 </div></header>
 
 <main id="top">
@@ -129,6 +190,7 @@ dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);bac
  <h1>Geschichten, die Kinder in Bewegung bringen</h1>
  <p>Mit Kürbisfee Pia durch das Jahr im Flüsterwald: jede Woche ein neues Kapitel zum Vorlesen und kurze Übungen für Kraft, Gleichgewicht und Körpergefühl.</p>
  <div class="cta"><a class="btn" href="https://app.kuerbisfeepia.de/">App kostenlos öffnen</a><a class="btn ghost" href="#wege">Was ist Kürbisfee Pia?</a></div>
+ <a class="neu" href="buch/ranas-geheimer-schatz/"><b>Neu</b>Ranas geheimer Schatz: kostenlose Mitmachgeschichte ab 3</a>
  <div class="chips"><span>Für Kinder von 4 bis 10</span><span>Ohne Anmeldung</span><span>Ohne Kosten</span><span>Ohne Werbung</span></div>
 </div></section>
 
@@ -139,26 +201,27 @@ dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);bac
   <a class="path" href="#app"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg></span><h3>Die kostenlose App</h3><p>Tägliches Training mit Timer, magischem Zauberpfad, Urkunden und Wochengeschichte.</p><span class="more">Zur App</span></a>
   <a class="path" href="#buch"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 5.5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0z"/><path d="M21 5.5c-3-1.5-6-1.5-9 0v14c3-1.5 6-1.5 9 0z"/></svg></span><h3>Das Online-Buch</h3><p>Pias Geschichten aus Herbst und Winter zum Durchblättern und Vorlesen.</p><span class="more">Zu den Geschichten</span></a>
   <a class="path" href="#uebungen"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v6M7 10l5-1 5 1M9 21l3-8 3 8"/></svg></span><h3>Die Übungen</h3><p>Übung der Woche, Mitmachgeschichten und Material zum Ausdrucken.</p><span class="more">Zu den Übungen</span></a>
-  <a class="path" href="#shop"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 12h-13z"/><path d="M8.5 8a3.5 3.5 0 0 1 7 0"/></svg></span><h3>Der Shop</h3><p>Plus-Version, Übungskarten, Workbooks und Pia zum Anziehen.</p><span class="more">Zum Shop</span></a>
+  <a class="path" href="#schatzkiste"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11" rx="2"/><path d="M3.5 13h17M12 13v3M5 9c0-3 3-5 7-5s7 2 7 5"/></svg></span><h3>Pias Schatzkiste</h3><p>Kostenlose Mitmachgeschichte, Winterpaket zum Ausdrucken und das Krafttier-Faltbüchlein.</p><span class="more">Zur Schatzkiste</span></a>
  </div>
 </div></section>
 
 <section id="events" class="alt"><div class="wrap">
- <div class="intro"><div class="eyebrow">Events</div><h2>Bewegtes Vorlesen mit Kürbisfee Pia</h2>
- <p class="lead">Ich lese vor, und die Kinder bewegen sich mit. Live in der Praxis Humaneo in Bad Homburg.</p></div>
+ <div class="intro"><div class="eyebrow">Events</div><h2>Bewegte Events für Kinder</h2>
+ <p class="lead">Bewegtes Vorlesen mit Kürbisfee Pia und andere Kinder-Events rund um Bad Homburg, bei denen Kinder in Bewegung kommen.</p></div>
+ <div id="evList" class="evlist"></div>
  <div class="ev">
   <img src="bilder/vorlesetag.jpg" alt="Pia und Füchsin Rana springen gemeinsam über einen Baumstamm" loading="lazy">
   <div>
-   <span class="tag">Zum Bundesweiten Vorlesetag</span>
+   <span class="tag">Rückblick · Bundesweiter Vorlesetag 2026</span>
    <h3 style="font-size:28px;margin-top:6px">Ranas geheimer Schatz</h3>
-   <p style="margin:10px 0 0">Was glitzert und knistert da im Flüsterwald? Füchsin Rana glaubt, einen ganz besonderen Schatz gefunden zu haben. Doch plötzlich geht es ihr gar nicht gut, und Kürbisfee Pia braucht dringend Hilfe. Eine neue Geschichte, exklusiv für den Vorlesetag geschrieben.</p>
-   <dl class="facts"><dt>Wann</dt><dd>Freitag, 20. November 2026, 17:30 Uhr</dd><dt>Wo</dt><dd>Humaneo, Daimlerstraße 13, 61352 Bad Homburg</dd><dt>Für wen</dt><dd>Kinder ab 4 Jahren, kostenlos</dd><dt>Dazu</dt><dd>Gemeinsam malen, singen und bewegen. Bitte bequeme Kleidung tragen. Waffeln für 1 Euro, verkauft von meinen Kindern.</dd></dl>
-   <div class="ev-before"><div class="cta"><a class="btn" id="evTicket" href="#">Kostenloses Ticket sichern</a><a class="btn ghost" id="evWa" href="#">Per WhatsApp anmelden</a></div>
-   <p class="note">Oder per E-Mail an mail@humaneo-praxis.de: Wie viele Erwachsene und Kinder kommen, und wie alt sind die Kinder? Die Plätze sind begrenzt.</p></div>
-   <div class="dl" id="evDl" hidden><h3>Pias Winterpaket</h3><p>„Ranas geheimer Schatz“ zum Nachlesen und Vorlesen, mit Ausmalbildern, Weihnachtskarten zum Ausmalen und Bastelanleitungen für das Kürbishaus, Strohsterne und Wichtel. Für 3,99 € in Pias Shop.</p><a class="btn" id="evStory" href="#">Zum Shop</a></div>
-   <div class="dl wl"><h3>Nächstes Event verpassen?</h3><p>Trag dich in die Warteliste ein, dann sage ich dir Bescheid, sobald das nächste Bewegte Vorlesen feststeht.</p><a class="btn ghost" id="evWait" href="#">Informiere mich über das nächste Event</a></div>
-   <div class="dl" id="evSoon"><h3>Die Geschichte zum Nachlesen</h3><p>„Ranas geheimer Schatz“ gibt es bald als Winterpaket in Pias Shop: die Geschichte, Ausmalbilder, Weihnachtskarten zum Ausmalen und Bastelanleitungen für das Kürbishaus, Strohsterne und Wichtel.</p></div>
+   <p style="margin:10px 0 0">Zum Bundesweiten Vorlesetag haben wir in der Praxis Humaneo gemeinsam gelesen, gesungen und uns bewegt. Füchsin Rana glaubt, im Flüsterwald einen glitzernden Schatz gefunden zu haben, doch dann geht es ihr gar nicht gut, und Kürbisfee Pia braucht dringend Hilfe.</p>
+   <p style="margin:10px 0 18px">Jetzt gibt es die Geschichte für alle: kostenlos zum Online-Lesen und als Winterpaket zum Ausdrucken. Für Kinder ab 3 Jahren, spannend bis etwa 11.</p>
+   <div class="cta"><a class="btn" href="buch/ranas-geheimer-schatz/">Geschichte kostenlos lesen</a><a class="btn ghost" href="#schatzkiste">Winterpaket holen</a></div>
   </div>
+ </div>
+ <div class="ev2">
+  <div class="dl"><h3>Dein Kinder-Event bei Pia</h3><p>Du organisierst ein Event für Kinder in Bad Homburg, im Hochtaunus oder im Rhein-Main-Gebiet? Einen Kinderlauf, ein Sportfest, eine Vorlesestunde, ein Bewegungsangebot im Verein, in der Kita oder in der Bücherei? Erzähl mir davon. Passende Events stelle ich hier und auf Instagram kostenlos vor.</p><a class="btn" href="#kontakt" data-anliegen="event">Event melden</a></div>
+  <div class="dl wl"><h3>Nächstes Event verpassen?</h3><p>Ich sage dir Bescheid, sobald das nächste Bewegte Vorlesen feststeht.</p><a class="btn ghost" id="evWait" href="#kontakt" data-anliegen="warteliste">Informiere mich über das nächste Event</a></div>
  </div>
 </div></section>
 
@@ -174,6 +237,13 @@ dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);bac
 <section id="buch"><div class="wrap">
  <div class="intro"><div class="eyebrow">Das Online-Buch</div><h2>Pias Geschichten aus dem Flüsterwald</h2>
  <p class="lead">Jede Jahreszeit ein eigenes Buch zum Durchblättern, direkt im Browser. Die Wintergeschichten gibt es lang und kurz für die Kleinen.</p></div>
+ <div class="feature">
+  <a href="buch/ranas-geheimer-schatz/"><img src="bilder/buch-ranas-schatz.jpg" alt="Buchcover Ranas geheimer Schatz" loading="lazy"></a>
+  <div><span class="tag">Neu · kostenlos</span><h3 style="font-size:30px;margin:6px 0 10px">Ranas geheimer Schatz</h3>
+   <p style="margin:0 0 10px">Eine Mitmachgeschichte zum Vorlesen und Bewegen, geschrieben für den Bundesweiten Vorlesetag. Mit sieben Übungen aus der Kinderphysiotherapie und dem Kinderyoga, die ganz natürlich in die Geschichte eingebaut sind: schleichen wie ein Fuchs, flattern wie ein Schmetterling, eine Brücke über den Mondbach bauen.</p>
+   <ul class="check" style="margin:12px 0 20px"><li>Für Kinder ab 3 Jahren, spannend bis etwa 11</li><li>Etwa 15 Minuten Lesezeit, mit Bewegung 25 bis 30 Minuten</li><li>Mit Übungsanleitungen und Tipps für Eltern</li></ul>
+   <div class="cta"><a class="btn" href="buch/ranas-geheimer-schatz/">Jetzt lesen</a><button type="button" class="btn ghost" id="teilenBuch" style="cursor:pointer;font:inherit;font-weight:700">Mit anderen Familien teilen</button></div></div>
+ </div>
  <div class="books">
   <a class="book" href="lesen/#herbst" style="text-decoration:none"><img src="bilder/buch-herbst.jpg" alt="Buchcover Herbst" loading="lazy"><span class="tag">Online lesen</span><h3>Herbst</h3><small>Wie alles begann: Pia, Hazel, Bruno und Rana</small></a>
   <a class="book" href="lesen/#winter" style="text-decoration:none"><img src="bilder/buch-winter.jpg" alt="Buchcover Winter" loading="lazy"><span class="tag">Online lesen</span><h3>Winter</h3><small>Winterwunder im Flüsterwald, 18 Wochen, lang und kurz</small></a>
@@ -216,16 +286,36 @@ dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);bac
  </div>
 </div></section>
 
-<section id="shop" class="shop"><div class="wrap">
- <div class="intro"><div class="eyebrow">Shop</div><h2 style="color:#fff">Noch mehr Pia für zu Hause und die Praxis</h2>
- <p class="lead">Die App bleibt kostenlos. Wer mehr möchte, findet hier Zusatzmaterial und Pia zum Anziehen.</p></div>
- <div class="shop-grid">
-  <div class="shop-card"><h3 style="color:#fff">Pias Shop</h3><p>Digitales Zusatzmaterial für Familien, Praxen und Kitas:</p>
-   <ul><li>Plus-Version der App mit Videos und Therapiemodus</li><li>Übungskarten und Wochenpläne</li><li>Workbooks und Bastelanleitungen</li></ul>
-   <a class="btn light" id="shopBtn" href="#">Zum Shop</a></div>
-  <div class="shop-card"><h3 style="color:#fff">Pia zum Anziehen</h3><p>T-Shirts, Pullis, Taschen und mehr mit Pia und ihren Freunden, gedruckt und verschickt von Spreadshirt.</p>
-   <a class="btn light" id="merchBtn" href="#">Zum Spreadshirt-Shop</a></div>
+<section id="schatzkiste" class="shop"><span id="shop"></span><div class="wrap">
+ <div class="intro"><div class="eyebrow">Pias Schatzkiste</div><h2 style="color:#fff">Geschenke aus dem Flüsterwald</h2>
+ <p class="lead">Alles hier ist kostenlos und bleibt es auch. Pia ist in meiner Kinderphysiotherapie entstanden, und ich möchte, dass möglichst viele Kinder mit ihr in Bewegung kommen. Teilt die Schätze gern mit anderen Familien, mit Großeltern, Kita und Schule.</p></div>
+ <div class="shop-grid three">
+  <div class="shop-card"><img src="bilder/buch-ranas-schatz.jpg" alt="" loading="lazy"><span class="free">Kostenlos · online</span><h3 style="color:#fff">Ranas geheimer Schatz</h3><p>Die Mitmachgeschichte zum Durchblättern auf Handy und Tablet. Für Kinder ab 3 Jahren, spannend bis etwa 11.</p>
+   <div class="btns"><a class="btn light" href="buch/ranas-geheimer-schatz/">Online lesen</a></div></div>
+  <div class="shop-card"><img src="bilder/vorlesetag.jpg" alt="" loading="lazy"><span class="free">Kostenlos · PDF</span><h3 style="color:#fff">Das Winterpaket</h3><p>Die ganze Geschichte zum Ausdrucken, dazu Ausmalbilder, Weihnachtskarten zum Ausmalen und Bastelanleitungen für Strohsterne, Wichtel und ein Kürbishaus.</p>
+   <div class="btns"><a class="btn light" id="dlWinter" href="downloads/Ranas-geheimer-Schatz-Winterpaket.pdf" download>Kostenlos herunterladen</a></div></div>
+  <div class="shop-card"><img src="bilder/krafttier-fuchs.jpg" alt="" loading="lazy"><span class="free">Kostenlos · PDF</span><h3 style="color:#fff">Dein Krafttier Fuchs</h3><p>Dein Faltbüchlein für unterwegs: ein Blatt, einmal schneiden, fertig. Mit Mutmach-Sätzen wie „Ich bin mutig“ und „Ich stehe sicher auf meinen Pfoten“, zum Ausmalen und mit einer kleinen Erdungsübung.</p>
+   <div class="btns"><a class="btn light" id="dlFuchs" href="downloads/Dein-Krafttier-Fuchs-Faltbuechlein.pdf" download>Kostenlos herunterladen</a></div></div>
  </div>
+ <div class="merch">
+  <div><span class="free" style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#E3EDD8;color:#4E7A3A;border-radius:999px;padding:3px 10px">Ohne Gewinn</span>
+   <h3 style="color:#fff;margin-top:10px">Pia zum Anziehen</h3>
+   <p>Euer Kind liebt Pia und ihre Freunde? Dann gibt es sie auch als Sportshirt, mit Mutmach-Sprüchen aus dem Flüsterwald für Turnhalle, Sportverein und Spielplatz. Ich verdiene daran nichts: Ihr zahlt nur, was Spreadshirt für Shirt, Druck und Versand berechnet. Ein kleiner Motivationsschub zum Anziehen.</p></div>
+  <div><a class="btn light" id="merchBtn" href="#">Zum Spreadshirt-Shop</a></div>
+ </div>
+ <div class="news" id="newsBox" hidden>
+  <div><h3 style="color:#fff">Post aus dem Flüsterwald</h3><p>Ab und zu eine kurze E-Mail, wenn es etwas Neues gibt: neue Geschichten, Events und Aktionen. Keine Werbung und keine Kaufangebote, Abmeldung jederzeit mit einem Klick.</p></div>
+  <a class="btn light" id="newsBtn" href="#">Eintragen</a>
+ </div>
+ <p class="smallprint">Alle Materialien sind für den privaten Gebrauch, in der Familie, in Kita und Schule. Bitte teilt den Link zu dieser Seite statt der Dateien selbst.</p>
+</div></section>
+
+<section id="praxis"><div class="wrap praxis">
+ <div><div class="eyebrow">Aus der Praxis</div><h2>Kinderphysiotherapie in Bad Homburg</h2>
+  <p class="lead" style="margin-top:12px">Hinter Pia steht die Kinderphysiotherapie der Praxis Humaneo. Dort begleiten wir Babys, Kleinkinder und Schulkinder, wenn Bewegung, Haltung, Koordination oder Entwicklung etwas Unterstützung brauchen.</p>
+  <p>Ihr fragt euch, ob euer Kind Unterstützung braucht? Sprecht mit eurer Kinderärztin oder eurem Kinderarzt, oder meldet euch direkt bei uns in der Praxis.</p>
+  <div class="cta" style="margin-top:20px"><a class="btn" href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Zur Kinderphysiotherapie bei Humaneo</a><a class="btn ghost" href="tel:+4961729177791">06172 9177791</a></div></div>
+ <div class="box"><h3 style="margin-bottom:8px">Praxis Humaneo</h3><p>Physiotherapie und Kinderphysiotherapie<br>Daimlerstraße 13<br>61352 Bad Homburg</p><p style="color:var(--muted);font-size:15px;margin-top:12px">Termine nach Vereinbarung. Kostenfreie Parkplätze direkt vor der Praxis.</p></div>
 </div></section>
 
 <section id="ueber" class="alt"><div class="wrap split rev">
@@ -233,14 +323,57 @@ dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);bac
  <div><div class="eyebrow">Die Frau hinter Pia</div><h2>Hallo, ich bin Alexandra</h2>
   <p class="lead" style="margin-top:12px">Ich bin Kinderphysiotherapeutin und arbeite seit 2010 mit Babys und Kindern, heute in der Praxis Humaneo in Bad Homburg, die ich gemeinsam mit Michael Amersbach leite. Oft ist mein Therapiebegleithund James mit dabei.</p>
   <p>Pia ist in meiner Praxis entstanden: aus einer kleinen Feentür, die ich orange und schwarz angemalt habe. Seitdem erlebe ich jeden Tag, wie viel mehr Kinder sich bewegen, wenn eine Geschichte dahintersteckt.</p>
-  <p class="quote">Was langsam wächst, wird stark.</p>
-  <div class="cta"><a class="btn ghost" href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Kinderphysiotherapie bei Humaneo</a></div></div>
+  <p class="quote">Bewegung macht Magie lebendig.</p>
+  <div class="np"><h3>Kostenlos, und das bleibt so</h3>
+   <p>Pia ist ein Herzensprojekt ohne Gewinn. Die App, das Online-Buch und alle PDFs zum Ausdrucken bleiben in der Form, wie es sie heute gibt, immer kostenlos. Auch an den Shirts verdiene ich nichts. Denn jedes Kind soll die Möglichkeit haben, die Magie von Bewegung zu erleben.</p>
+   <p>Vielleicht gibt es irgendwann zusätzlich eine aufwändigere App-Variante oder einzelne Angebote, die etwas kosten. Das kostenlose Angebot bleibt trotzdem bestehen. Ich möchte, dass Kinder in Bewegung kommen, dass Eltern entlastet werden und dass Freude an Bewegung entsteht, ein bisschen Magie im Alltag.</p>
+   <p>Mein Wunsch: Pia soll sich durch ganz Deutschland verbreiten. Am meisten hilft es, wenn ihr sie mit anderen Familien, Kitas und Schulen teilt.</p></div>
+  <p>Damit alles kostenlos bleiben kann, entstehen Pias Bilder bisher mit Unterstützung von KI, nach meinen eigenen Ideen und Vorgaben. Geschichten, Übungen und Konzept kommen von mir.</p>
+  <div class="cta"><a class="btn" href="#mitmachen">Mitmachen und unterstützen</a><a class="btn ghost" href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Kinderphysiotherapie bei Humaneo</a></div></div>
+</div></section>
+
+<section id="mitmachen" class="alt"><div class="wrap">
+ <div class="intro"><div class="eyebrow">Mitmachen</div><h2>Bewegung macht Magie lebendig</h2>
+ <p class="lead">Pia ist ein Herzensprojekt, und ich nehme gern andere mit ins Boot, die Lust haben, Kinder in Bewegung zu bringen. Für die Kinder, für ihre Zukunft und für die Natur, in der sie aufwachsen.</p></div>
+ <div class="helpers">
+  <div class="helper star"><span class="tag">Mein großer Traum</span><h3>Illustratorin gesucht</h3><p>Du zeichnest mit Herz und hast Lust, Pia und den Flüsterwald ohne Gewinn zu illustrieren? Dein Name und deine Arbeit bekommen hier einen festen Platz, mit Link zu deiner Seite.</p><a href="#kontakt" data-anliegen="mitmachen">Ich habe Lust</a></div>
+  <div class="helper"><h3>Expertinnen und Experten</h3><p>Aus Pädagogik, Sport, Therapie, Leseförderung oder Naturschutz? Gemeinsame Ideen, Events und Mitmachaktionen für Kinder, gern auch draußen im Wald.</p><a href="#kontakt" data-anliegen="mitmachen">Kontakt aufnehmen</a></div>
+  <div class="helper"><h3>App- und Web-Profis</h3><p>Bisher entsteht alles in Eigenregie. Wer sich mit App-Gestaltung, Design oder Technik auskennt und Pia unterstützen möchte, ist herzlich willkommen.</p><a href="#kontakt" data-anliegen="mitmachen">Unterstützung anbieten</a></div>
+  <div class="helper"><h3>Alle, die Pia mögen</h3><p>Teilt die Geschichten und die App mit Familien, Kitas, Schulen und Vereinen. Jede Weiterempfehlung bringt ein Kind mehr in Bewegung.</p><a href="buch/ranas-geheimer-schatz/">Geschichte teilen</a></div>
+ </div>
+</div></section>
+
+<section id="kontakt"><div class="wrap kontakt">
+ <div class="intro"><div class="eyebrow">Kontakt</div><h2>Schreib mir</h2>
+ <p class="lead">Fragen zu Pia, ein Kinder-Event für die Region, eine Idee für Kita oder Schule oder einfach ein Gruß aus dem Wohnzimmer: Ich freue mich über deine Nachricht.</p></div>
+ <form class="kf" id="kf" novalidate>
+  <label>Worum geht es?<select name="Anliegen" id="kfAnliegen">
+   <option value="Frage zu Kürbisfee Pia">Frage zu Kürbisfee Pia</option>
+   <option value="Event melden">Ein Kinder-Event melden</option>
+   <option value="Warteliste Bewegtes Vorlesen">Über das nächste Bewegte Vorlesen informieren</option>
+   <option value="Mitmachen und unterstützen">Mitmachen und unterstützen</option>
+   <option value="Kita, Schule oder Praxis">Kita, Schule oder Praxis</option>
+   <option value="Presse und Kooperation">Presse und Kooperation</option>
+   <option value="Feedback">Feedback und Grüße</option>
+  </select></label>
+  <div class="two"><label>Dein Name<input name="Name" required autocomplete="name"></label><label>Deine E-Mail-Adresse<input name="email" type="email" required autocomplete="email"></label></div>
+  <div class="evf" id="kfEvent" hidden>
+   <label>Name des Events<input name="Event"></label>
+   <div class="two"><label>Datum und Uhrzeit<input name="Wann" placeholder="z. B. Sa., 14. März, 10 Uhr"></label><label>Ort<input name="Ort" placeholder="z. B. Kurpark Bad Homburg"></label></div>
+   <div class="two"><label>Für welches Alter?<input name="Alter" placeholder="z. B. 4 bis 10 Jahre"></label><label>Link zum Event (optional)<input name="Link" type="url" placeholder="https://"></label></div>
+  </div>
+  <label><span id="kfMsgLabel">Deine Nachricht</span><textarea name="Nachricht" required></textarea></label>
+  <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <label class="check"><input type="checkbox" id="kfOk" required><span>Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Nachricht verarbeitet werden. Mehr dazu in der <button type="button" data-legal="datenschutz" style="font:inherit;color:var(--pumpkin);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline">Datenschutzerklärung</button>.</span></label>
+  <div id="kfMsg" class="msg" hidden></div>
+  <button class="btn" type="submit" id="kfBtn">Nachricht senden</button>
+ </form>
 </div></section>
 </main>
 
 <footer><div class="wrap">
- <div><strong style="color:var(--ink);font-family:Lora,serif;font-size:19px">Kürbisfee Pia</strong><br>Geschichten, die Kinder in Bewegung bringen.<br>Die App ersetzt keine physiotherapeutische oder ärztliche Beratung.</div>
- <div class="fl"><a href="https://app.kuerbisfeepia.de/">App</a><a class="ig" href="#">Instagram</a><a href="#shop">Shop</a><a href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Praxis Humaneo</a><button type="button" data-legal="impressum">Impressum</button><button type="button" data-legal="datenschutz">Datenschutz</button></div>
+ <div><strong style="color:var(--ink);font-family:Lora,serif;font-size:19px">Kürbisfee Pia</strong><br>Geschichten, die Kinder in Bewegung bringen.<br>Ein Herzensprojekt ohne Gewinn. App und Materialien bleiben kostenlos.<br>Die App ersetzt keine physiotherapeutische oder ärztliche Beratung.</div>
+ <div class="fl"><a href="https://app.kuerbisfeepia.de/">App</a><a href="buch/ranas-geheimer-schatz/">Mitmachgeschichte</a><a href="#schatzkiste">Schatzkiste</a><a class="ig" href="#">Instagram</a><a href="https://humaneo-praxis.de/kinder-kleinkinder.html" rel="noopener">Kinderphysiotherapie Humaneo</a><a href="#ueber">Über uns</a><a href="#mitmachen">Mitmachen</a><a href="#kontakt">Kontakt</a><button type="button" data-legal="impressum">Impressum</button><button type="button" data-legal="datenschutz">Datenschutz</button></div>
  <div style="width:100%">© 2026 Alexandra Amersbach</div>
 </div></footer>
 
@@ -248,16 +381,19 @@ dialog .x button{font:inherit;font-weight:700;border:1.5px solid var(--line);bac
 <script>
 /* ===== Links hier eintragen ===== */
 const LINKS={
-  shop:"",   // Shop bei systeme.io, z. B. https://alexandra-humaneo.systeme.io/ (leer = Coming soon)
-  merch:"https://kuerbisfeepia.myspreadshop.de/",  // Spreadshirt-Shop
+  merch:"https://kuerbisfeepia.myspreadshop.de/",  // Spreadshirt-Shop (ohne Gewinn)
   instagram:"https://www.instagram.com/kuerbisfeepia/",
-  ticket:"https://www.eventbrite.com/e/bewegtes-vorlesen-mit-kurbisfee-pia-tickets-2004378337564",
-  whatsapp:"https://wa.me/491776700746?text="+encodeURIComponent("Hallo, wir melden uns zum Bewegten Vorlesen am 20.11. an. Erwachsene: _ Kinder: _ Alter: _"),
-  warteliste:"",     // Link zum Eintragsformular bei systeme.io (leer = E-Mail an die Praxis)
-  story:"",          // Link zur Anmeldeseite bei systeme.io, über die die Geschichte verschickt wird
-  storyAb:"2026-11-21",  // ab diesem Tag erscheint der Download
-  eventEnde:"2026-11-20T19:30"  // danach verschwindet die Anmeldung
+  formular:"alexandra.humaneo@gmail.com",  // Hier kommen Kontaktformular und Event-Meldungen an
+  // Eintragsseiten bei systeme.io (shop.kuerbisfeepia.de). Leer = direkter Download ohne E-Mail.
+  winterpaket:"",   // z. B. https://shop.kuerbisfeepia.de/winterpaket
+  fuchs:"",         // z. B. https://shop.kuerbisfeepia.de/krafttier-fuchs
+  newsletter:""     // z. B. https://shop.kuerbisfeepia.de/post-aus-dem-fluesterwald (leer = Kasten ausgeblendet)
 };
+/* ===== Termine hier eintragen (vergangene verschwinden von selbst) =====
+   Beispiel: {datum:"2027-03-14", zeit:"10 Uhr", titel:"Kinderlauf im Kurpark", ort:"Kurpark Bad Homburg", text:"Für Kinder von 4 bis 10 Jahren.", link:"https://..."} */
+const EVENTS=[
+  {datum:"2026-11-29", zeit:"10:30–11:30 Uhr", titel:"Einladung zu Run Kids Bad Homburg – Laufen, spielen, gemeinsam wachsen!", ort:"Treffpunkt: MySoulSpace Café, Schwedenpfad 6, Bad Homburg · Bewegungsort: Jubiläumspark", text:"Run Kids ist ein pädagogisch begleitetes Bewegungsangebot der DKB Kompassfamilie für Kinder von 4 bis 11 Jahren. Im Mittelpunkt stehen die Freude an der Bewegung, das gemeinsame Erleben und die individuellen Fähigkeiten jedes Kindes. Das Besondere: Jedes Kind bewegt sich in seinem eigenen Tempo – ohne Leistungsdruck. Vorkenntnisse sind nicht erforderlich. Dank der Unterstützung engagierter Sponsoren ist die Teilnahme kostenlos und ohne Anmeldung. Tipp: Bequeme Sport- und Laufkleidung anziehen.", link:""}
+];
 const LEGAL={impressum:`
     <h3>Impressum</h3>
     <h4>Angaben gemäß § 5 DDG</h4>
@@ -283,34 +419,61 @@ const LEGAL={impressum:`
     <p>Kürbisfee Pia ist ein eigenes Angebot von Alexandra Amersbach. Es wird von der Praxis Humaneo angeboten und verlinkt, ist aber kein Angebot der Praxis.</p>
     <p>Hinweis: Die App ersetzt keine individuelle physiotherapeutische Anleitung und keine ärztliche Beratung.</p>`,datenschutz:`
     <h3>Datenschutzerklärung</h3>
-    <p>Stand: Oktober 2026</p>
+    <p>Stand: November 2026</p>
     <h4>1. Verantwortliche</h4>
     <p>Alexandra Amersbach, c/o Humaneo, Daimlerstraße 13, 61352 Bad Homburg v.d.H.<br>
     E-Mail: mail@humaneo-praxis.de · Telefon: 06172 9177791</p>
     <h4>2. Kurz gesagt</h4>
-    <p>Diese Website und die App kommen ohne Benutzerkonto, ohne Anmeldung, ohne Cookies und ohne Tracking oder Statistik-Tools aus. Ich erhalte keine Daten über deine Nutzung der App.</p>
+    <p>Diese Website und die App kommen ohne Benutzerkonto, ohne Cookies und ohne Tracking oder Statistik-Tools aus. Ich erhalte keine Daten über deine Nutzung der App. Daten von dir bekomme ich nur, wenn du mir selbst schreibst, zum Beispiel über das Kontaktformular, oder dich für Post aus dem Flüsterwald einträgst.</p>
     <h4>3. Daten auf deinem Gerät</h4>
     <p>Wenn du die App benutzt, speichert sie folgende Angaben ausschließlich im lokalen Speicher (localStorage) deines Browsers auf deinem Gerät: ein von dir eingegebener Name (am besten nur ein Vorname oder Spitzname), abgehakte Übungen, Kürbisse und Abzeichen, gewählte Einstellungen sowie selbst hinzugefügte Übungen mit Fotos, Videolinks und der optionale Kindermodus-PIN. Diese Daten werden nicht an mich oder Dritte übertragen und nicht in einer Cloud gespeichert. Ich habe darauf keinen Zugriff.</p>
     <p>Du kannst die Daten jederzeit selbst löschen, indem du in deinem Browser die Website-Daten dieser Seite löschst. Dann sind auch Fortschritt und eigene Übungen weg. Bitte gib keine Gesundheitsdaten oder Nachnamen von Kindern ein, das ist für die Nutzung nicht nötig. Die App richtet sich an Eltern und Bezugspersonen, Kinder nutzen sie unter deren Aufsicht.</p>
     <h4>4. Bereitstellung der Seite (Hosting)</h4>
     <p>Website und App werden über GitHub Pages bereitgestellt (GitHub Inc., eine Tochter der Microsoft Corporation, USA). Beim Aufruf verarbeitet der Hosting-Anbieter technisch bedingt deine IP-Adresse und Zugriffsdaten (Datum, Uhrzeit, abgerufene Datei, Browsertyp) in Server-Logdateien. Das ist erforderlich, um dir Website und App auszuliefern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Bereitstellung). Eine Übermittlung in die USA kann dabei stattfinden; sie stützt sich auf die vom Anbieter bereitgestellten Garantien (EU-US Data Privacy Framework bzw. Standardvertragsklauseln). Ich selbst setze keine Cookies und keine Analyse-Dienste ein. Schriftarten und Bilder werden von dieser Seite selbst geladen, nicht von Servern Dritter.</p>
     <h4>5. Externe Links</h4>
-    <p>Diese Website und die App enthalten Links zu meinem Shop bei systeme.io, zum Merchandise-Shop bei Spreadshirt, zu Instagram, YouTube (Videos), WhatsApp (Kürbisfee-Kanal und Terminanfrage) und zur Praxis-Website www.humaneo-praxis.de. Die Inhalte werden nicht eingebettet. Erst wenn du einen Link antippst, verlässt du diese Seite, und es gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Bestellungen und Zahlungen laufen ausschließlich über den jeweiligen Shop. Wenn du dir eine Geschichte per E-Mail schicken lässt, trägst du dich auf einer Seite von systeme.io ein; dort gelten deren Datenschutzhinweise, und du kannst dich jederzeit wieder abmelden. Die Ticketbuchung für Veranstaltungen läuft über Eventbrite.</p>
-    <h4>6. Kontaktaufnahme</h4>
-    <p>Wenn du mir per E-Mail, WhatsApp oder Telefon schreibst, verarbeite ich deine Angaben (z. B. Name, Nachricht, Kontaktdaten) zur Bearbeitung deiner Anfrage, Rechtsgrundlage Art. 6 Abs. 1 lit. b bzw. f DSGVO. Bei WhatsApp gelten zusätzlich die Datenschutzbestimmungen von WhatsApp.</p>
+    <p>Diese Website und die App enthalten Links zu meinen Eintragsseiten bei systeme.io, zum Merchandise-Shop bei Spreadshirt, zu Instagram, YouTube (Videos), WhatsApp (Kürbisfee-Kanal und Terminanfrage) und zur Praxis-Website www.humaneo-praxis.de. Die Inhalte werden nicht eingebettet. Erst wenn du einen Link antippst, verlässt du diese Seite, und es gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Bestellungen und Zahlungen im Merchandise-Shop laufen ausschließlich über Spreadshirt. Die Ticketbuchung für Veranstaltungen läuft gegebenenfalls über Eventbrite.</p>
+    <h4>6. Kontaktaufnahme und Kontaktformular</h4>
+    <p>Wenn du mir per Kontaktformular, E-Mail, WhatsApp oder Telefon schreibst, verarbeite ich deine Angaben (z. B. Name, Nachricht, Kontaktdaten) zur Bearbeitung deiner Anfrage, Rechtsgrundlage Art. 6 Abs. 1 lit. b bzw. f DSGVO. Bei WhatsApp gelten zusätzlich die Datenschutzbestimmungen von WhatsApp.</p>
+    <p>Das Kontaktformular auf dieser Website wird über den Dienst FormSubmit (formsubmit.co) übermittelt. FormSubmit leitet deine Angaben (Anliegen, Name, E-Mail-Adresse, Nachricht und bei Event-Meldungen die Angaben zum Event) als E-Mail an mein Postfach weiter, das bei Google (Gmail) liegt. Dabei kann eine Übermittlung in Länder außerhalb der EU, insbesondere in die USA, stattfinden. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du mit dem Haken im Formular gibst und jederzeit widerrufen kannst, sowie Art. 6 Abs. 1 lit. b DSGVO. Ich lösche deine Nachricht, sobald sie erledigt ist und keine Aufbewahrungspflichten bestehen. Wenn du ein Event meldest, veröffentliche ich nur die Angaben zum Event, nicht deinen Namen oder deine E-Mail-Adresse.</p>
+    <h4>6a. Kostenlose Downloads und Post aus dem Flüsterwald</h4>
+    <p>Für einige kostenlose Materialien und für gelegentliche Neuigkeiten aus dem Flüsterwald kannst du deine E-Mail-Adresse auf einer Seite von systeme.io (systeme.io SAS, Frankreich) eintragen. Du bekommst dann eine E-Mail, in der du deine Eintragung bestätigst (Double-Opt-in), und anschließend den Download. Neuigkeiten per E-Mail schicke ich nur, wenn du dem ausdrücklich zugestimmt hast. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst dich jederzeit über den Link in jeder E-Mail abmelden; dann lösche ich deine Adresse aus der Liste.</p>
     <h4>7. Deine Rechte</h4>
     <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner personenbezogenen Daten, auf Datenübertragbarkeit sowie auf Widerspruch gegen Verarbeitungen, die auf berechtigtem Interesse beruhen. Wende dich dazu an die oben genannte Adresse. Außerdem hast du das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, z. B. beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit, Postfach 3163, 65021 Wiesbaden.</p>
     <h4>8. Änderungen</h4>
     <p>Ich passe diese Erklärung an, wenn sich die App oder die Rechtslage ändert. Es gilt die jeweils aktuelle Fassung in der App.</p>`};
 function setLink(el,url){if(url){el.href=url;el.rel="noopener"}else{el.setAttribute("aria-disabled","true");el.textContent="Coming soon";el.removeAttribute("href");el.style.opacity=".7";el.style.cursor="default"}}
-setLink(document.getElementById("shopBtn"),LINKS.shop);setLink(document.getElementById("merchBtn"),LINKS.merch);
+setLink(document.getElementById("merchBtn"),LINKS.merch);
 document.querySelectorAll("a.ig").forEach(a=>{a.href=LINKS.instagram;a.rel="noopener"});
-document.getElementById("evTicket").href=LINKS.ticket;
-(function(){const w=document.getElementById("evWait");if(LINKS.warteliste){w.href=LINKS.warteliste;w.rel="noopener"}else{w.href="mailto:mail@humaneo-praxis.de?subject="+encodeURIComponent("Warteliste: Nächstes Event mit Kürbisfee Pia")+"&body="+encodeURIComponent("Hallo Alexandra,\n\nbitte informiere mich über das nächste Bewegte Vorlesen mit Kürbisfee Pia.\n\nVorname:\nAlter der Kinder:\n\nViele Grüße")}})();document.getElementById("evWa").href=LINKS.whatsapp;
-(function(){const now=new Date();const ab=new Date(LINKS.storyAb+"T00:00");
- if(now>new Date(LINKS.eventEnde))document.querySelector(".ev-before").hidden=true;
- if(now>=ab&&LINKS.story){document.getElementById("evDl").hidden=false;document.getElementById("evSoon").hidden=true;const a=document.getElementById("evStory");a.href=LINKS.story;a.rel="noopener"}
- else if(now>=ab){document.querySelector("#evSoon p").textContent="„Ranas geheimer Schatz“ gibt es bald als Winterpaket in Pias Shop. Schau bald wieder vorbei."}})();
+/* Downloads: mit Eintragsseite über E-Mail, sonst direkt */
+[["dlWinter",LINKS.winterpaket],["dlFuchs",LINKS.fuchs]].forEach(([id,url])=>{if(!url)return;const a=document.getElementById(id);a.href=url;a.rel="noopener";a.removeAttribute("download");a.textContent="Kostenlos per E-Mail erhalten"});
+if(LINKS.newsletter){const w=document.getElementById("evWait");w.href=LINKS.newsletter;w.rel="noopener";w.removeAttribute("data-anliegen");document.getElementById("newsBox").hidden=false;const n=document.getElementById("newsBtn");n.href=LINKS.newsletter;n.rel="noopener"}
+/* Termine */
+(function(){const box=document.getElementById("evList");const heute=new Date();heute.setHours(0,0,0,0);
+ const M=["Jan.","Feb.","März","Apr.","Mai","Juni","Juli","Aug.","Sep.","Okt.","Nov.","Dez."];
+ const L=EVENTS.filter(e=>new Date(e.datum+"T23:59")>=heute).sort((a,b)=>a.datum.localeCompare(b.datum));
+ const t=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+ if(!L.length){box.innerHTML='<div class="evitem"><div class="evdate">Bald<small>neue Termine</small></div><div><h3>Gerade steht kein Termin fest</h3><p>Das nächste Bewegte Vorlesen ist in Planung. Trag dich unten ein, dann sage ich dir Bescheid.</p></div></div>';return}
+ box.innerHTML=L.map(e=>{const d=new Date(e.datum+"T12:00");return '<div class="evitem"><div class="evdate">'+d.getDate()+'.<small>'+M[d.getMonth()]+' '+d.getFullYear()+'</small></div><div><h3>'+t(e.titel)+'</h3><p>'+(e.zeit?t(e.zeit)+' · ':'')+t(e.ort)+'</p>'+(e.text?'<p>'+t(e.text)+'</p>':'')+(e.link?'<p><a href="'+t(e.link)+'" rel="noopener">Mehr erfahren</a></p>':'')+'</div></div>'}).join("")})();
+/* Teilen */
+(function(){const b=document.getElementById("teilenBuch");if(!b)return;const url="https://kuerbisfeepia.de/buch/ranas-geheimer-schatz/",txt="Ranas geheimer Schatz: eine kostenlose Mitmachgeschichte mit Kürbisfee Pia für Kinder ab 3 Jahren. Zum Vorlesen und Mitbewegen:";
+ b.onclick=async()=>{try{if(navigator.share){await navigator.share({title:"Ranas geheimer Schatz",text:txt,url});return}await navigator.clipboard.writeText(url);b.textContent="Link kopiert"}catch(e){if(e&&e.name==="AbortError")return;prompt("Link zum Kopieren:",url)}}})();
+/* Kontaktformular */
+(function(){const f=document.getElementById("kf"),sel=document.getElementById("kfAnliegen"),ev=document.getElementById("kfEvent"),msg=document.getElementById("kfMsg"),btn=document.getElementById("kfBtn"),lab=document.getElementById("kfMsgLabel");
+ function upd(){const e=sel.value==="Event melden";ev.hidden=!e;ev.querySelector('[name="Event"]').required=e;lab.textContent=e?"Kurze Beschreibung: Was erwartet die Kinder?":sel.value.startsWith("Warteliste")?"Wie viele Kinder, und wie alt sind sie? (optional)":"Deine Nachricht";f.Nachricht.required=!sel.value.startsWith("Warteliste")}
+ sel.addEventListener("change",upd);upd();
+ document.addEventListener("click",e=>{const a=e.target.closest("[data-anliegen]");if(!a)return;sel.value={event:"Event melden",warteliste:"Warteliste Bewegtes Vorlesen",mitmachen:"Mitmachen und unterstützen"}[a.dataset.anliegen]||sel.value;upd()});
+ function show(t,ok,html){msg.hidden=false;msg.className="msg "+(ok?"ok":"err");if(html)msg.innerHTML=t;else msg.textContent=t}
+ f.addEventListener("submit",async e=>{e.preventDefault();
+  if(!f.checkValidity()||!document.getElementById("kfOk").checked){f.reportValidity();if(!document.getElementById("kfOk").checked)show("Bitte bestätige noch kurz den Datenschutz-Hinweis.",false);return}
+  if(f._honey.value)return;
+  const d={};new FormData(f).forEach((v,k)=>{if(v&&k!=="_honey")d[k]=v});d._subject="Kürbisfee Pia: "+sel.value;d._template="table";d._replyto=d.email;
+  btn.disabled=true;btn.textContent="Wird gesendet …";
+  try{const r=await fetch("https://formsubmit.co/ajax/"+LINKS.formular,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});const j=await r.json().catch(()=>({}));
+   if(!r.ok||j.success==="false"||j.success===false)throw new Error(j.message||"Fehler");
+   f.reset();upd();show("Danke für deine Nachricht! Ich melde mich so bald wie möglich.",true)}
+  catch(err){const body=Object.entries(d).filter(([k])=>!k.startsWith("_")).map(([k,v])=>k+": "+v).join("\n");
+   show('Das Senden hat gerade nicht geklappt. Du kannst mir auch direkt schreiben: <a href="mailto:'+LINKS.formular+'?subject='+encodeURIComponent("Kürbisfee Pia: "+sel.value)+'&body='+encodeURIComponent(body)+'">'+LINKS.formular+'</a>',false,true)}
+  btn.disabled=false;btn.textContent="Nachricht senden"})})();
 const dlg=document.getElementById("legal");
 document.addEventListener("click",e=>{const b=e.target.closest("[data-legal]");if(b){document.getElementById("legalIn").innerHTML=LEGAL[b.dataset.legal];dlg.showModal();return}
  if(e.target.closest("[data-close]")||e.target===dlg)dlg.close()});
